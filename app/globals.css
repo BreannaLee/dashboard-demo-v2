@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+html, body { margin: 0; padding: 0; height: 100%; }
+a { color: #222222; text-decoration: underline; text-underline-offset: 3px; }
+a:hover { color: #1A7E22; }
+@keyframes csm-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@keyframes csm-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-thumb { background: #CCCCCC; border-radius: 999px; }
+::-webkit-scrollbar-track { background: transparent; }
