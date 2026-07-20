@@ -429,10 +429,18 @@ function buildGenreVideos() {
       }));
       const tagShorts = v.tags.map(k => CATS[k]?.short || k);
       const summary = 'This ' + g.name.toLowerCase() + ' video from ' + v.ch + ' was flagged mainly for ' + tagShorts.slice(0, 2).join(' and ').toLowerCase() + '. ' + moments.length + ' moments were timestamped across the video so you can review or skip them.';
+      // Map available thumbnail images by genre+index
+      const thumbMap: Record<string, string> = {
+        'music-0': '/vidthumb-music-v0.webp', 'music-1': '/vidthumb-music-v1.webp',
+        'music-2': '/vidthumb-music-v2.webp', 'music-3': '/vidthumb-music-v3.webp',
+        'mrbeast': '/vidthumb-mrbeast.webp',
+      };
+      const thumbKey = gid + '-' + vi;
+      const thumb = thumbMap[thumbKey] || (v.ch === 'MrBeast' ? '/vidthumb-mrbeast.webp' : undefined);
       return {
         id: gid + '-v' + vi, genre: gid, title: v.title, channel: v.ch,
         duration: v.dur, durS, views: v.views, age: g.age, overall: v.overall,
-        thumbBg: v.color || g.color, when: 'recently', commentCount: 2 + (hashStr(v.title) % 20),
+        thumbBg: v.color || g.color, thumb, when: 'recently', commentCount: 2 + (hashStr(v.title) % 20),
         blurb: 'Flagged for ' + tagShorts.slice(0, 2).join(' & ').toLowerCase() + '.',
         summary, moments, cats,
       };
@@ -1005,6 +1013,7 @@ export default function Dashboard() {
                 {curGenreVideos.map(v => (
                   <button key={v.id} onClick={() => { setCurrentId(v.id); setAnSel([]); setScreen('analysis'); }} style={{ textAlign: 'left', background: '#fff', border: '1px solid #EFEFEF', borderRadius: '12px', padding: '10px 10px 14px', fontFamily: "'Lato',sans-serif", cursor: 'pointer', display: 'flex', flexDirection: 'column', gap: '9px', boxShadow: '0 1px 3px rgba(0,0,0,0.06)' }}>
                     <div style={{ position: 'relative', aspectRatio: '16/9', borderRadius: '8px', overflow: 'hidden', background: v.thumbBg }}>
+                      {v.thumb && <img src={v.thumb} alt={v.title} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />}
                       <span style={{ position: 'absolute', bottom: '8px', right: '8px', zIndex: 2, background: 'rgba(0,0,0,0.8)', color: '#fff', fontSize: '11px', fontWeight: 700, padding: '2px 6px', borderRadius: '4px' }}>{v.duration}</span>
                     </div>
                     <div style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', color: '#757575' }}>YouTube Video</div>
@@ -1101,6 +1110,7 @@ export default function Dashboard() {
                 {channelVideosList.map(v => (
                   <button key={v.id} onClick={() => { setCurrentId(v.id); setAnSel([]); setScreen('analysis'); }} style={{ textAlign: 'left', background: '#fff', border: '1px solid #EFEFEF', borderRadius: '12px', padding: '10px 10px 14px', fontFamily: "'Lato',sans-serif", cursor: 'pointer', display: 'flex', flexDirection: 'column', gap: '9px', boxShadow: '0 1px 3px rgba(0,0,0,0.06)' }}>
                     <div style={{ position: 'relative', aspectRatio: '16/9', borderRadius: '8px', overflow: 'hidden', background: v.thumbBg }}>
+                      {v.thumb && <img src={v.thumb} alt={v.title} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />}
                       <span style={{ position: 'absolute', bottom: '8px', right: '8px', zIndex: 2, background: 'rgba(0,0,0,0.8)', color: '#fff', fontSize: '11px', fontWeight: 700, padding: '2px 6px', borderRadius: '4px' }}>{v.duration}</span>
                     </div>
                     <div style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', color: '#757575' }}>YouTube Video</div>
