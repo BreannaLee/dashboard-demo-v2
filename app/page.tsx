@@ -29,6 +29,27 @@ interface Analysis {
   genre?: string;
 }
 
+// Map creator/video names to real analysis URLs
+const REAL_ANALYSIS_URLS: Record<string, string> = {
+  'backrooms': 'https://video-analyzer-dev.commonsense.org/video/analysis/69c8286e-25c1-4df2-82ff-7fc6ea226897',
+  'mrbeast': 'https://video-analyzer-dev.commonsense.org/video/analysis/694f3995-c81e-4281-b576-84230a49e964',
+  'james charles': 'https://video-analyzer-dev.commonsense.org/video/analysis/23515007-12b7-4d39-97ba-75c2e45f9bf8',
+  'gibi asmr': 'https://video-analyzer-dev.commonsense.org/video/analysis/d6f8bd9a-0aca-45d5-8e98-01ec021ff804',
+  'blippi': 'https://video-analyzer-dev.commonsense.org/video/analysis/a254d0b9-aa4c-42f8-abe3-97b1db37b25f',
+  'cocomelon': 'https://video-analyzer-dev.commonsense.org/video/analysis/5a271fce-fe1d-45b0-becb-8d64eaa3ce48',
+  'ms rachel': 'https://video-analyzer-dev.commonsense.org/video/analysis/3d850b6d-d2d8-4c71-9981-bbedd81481db',
+  'kane pixels': 'https://video-analyzer-dev.commonsense.org/video/analysis/69c8286e-25c1-4df2-82ff-7fc6ea226897',
+};
+
+function getRealAnalysisUrl(channelOrId: string): string | null {
+  const key = channelOrId.toLowerCase().trim();
+  if (REAL_ANALYSIS_URLS[key]) return REAL_ANALYSIS_URLS[key];
+  for (const [k, v] of Object.entries(REAL_ANALYSIS_URLS)) {
+    if (key.includes(k) || k.includes(key)) return v;
+  }
+  return null;
+}
+
 const ANALYSES: Analysis[] = [
   {
     id: 'backrooms', title: 'The Backrooms (Found Footage)', channel: 'Kane Pixels',
@@ -709,7 +730,15 @@ export default function Dashboard() {
     };
 
     let vids = allAnalyses.filter(a => a.channel.toLowerCase() === cc.name.toLowerCase().trim());
-    if (!vids.length) vids = genreVideos[cc.genreId] || [];
+    if (!vids.length) {
+      // Generate fake videos attributed to this specific creator
+      const genreVids = genreVideos[cc.genreId] || [];
+      vids = genreVids.slice(0, 4).map((v, i) => ({
+        ...v,
+        id: cc.name.toLowerCase().replace(/\s+/g, '-') + '-v' + i,
+        channel: cc.name,
+      }));
+    }
     channelVideosList = vids.map(decorate);
   }
 
@@ -841,12 +870,15 @@ export default function Dashboard() {
           )}
 
           {/* ================= ANALYSIS DETAIL ================= */}
-          {screen === 'analysis' && (
+          {screen === 'analysis' && (() => {
+            const an = allAnalyses.find(a => a.id === currentId) || allAnalyses[0];
+            const realUrl = getRealAnalysisUrl(an.channel) || getRealAnalysisUrl(an.id);
+            return realUrl ? (
             <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
               <div style={{ padding: '12px 40px 0' }}>
                 <button onClick={() => goScreen('home')} style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', border: 'none', background: 'transparent', fontFamily: "'Lato',sans-serif", fontSize: '13px', fontWeight: 700, color: '#757575', cursor: 'pointer', padding: '0 0 8px' }}>&larr; Back to Analyzer</button>
               </div>
-              <iframe src="https://video-analyzer-dev.commonsense.org/video/analysis/69c8286e-25c1-4df2-82ff-7fc6ea226897" style={{ flex: 1, width: '100%', border: 'none', minHeight: 'calc(100vh - 120px)' }} title="Video Analysis" />
+              <iframe src={realUrl} style={{ flex: 1, width: '100%', border: 'none', minHeight: 'calc(100vh - 120px)' }} title="Video Analysis" />
               <div style={{ display: 'none' }}>
 
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: '28px', alignItems: 'start', marginBottom: '28px' }}>
@@ -995,7 +1027,25 @@ export default function Dashboard() {
               </section>
               </div>
             </div>
-          )}
+            ) : (
+            <div style={{ maxWidth: '560px', margin: '80px auto', padding: '0 24px' }}>
+              <div style={{ padding: '12px 0 0' }}>
+                <button onClick={() => goScreen('home')} style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', border: 'none', background: 'transparent', fontFamily: "'Lato',sans-serif", fontSize: '13px', fontWeight: 700, color: '#757575', cursor: 'pointer', padding: '0 0 16px' }}>&larr; Back to Analyzer</button>
+              </div>
+              <section style={{ background: '#fff', border: '1px solid #33A544', borderRadius: '12px', boxShadow: '0 2px 8px rgba(0,0,0,0.10)', padding: '40px 36px 36px', display: 'flex', flexDirection: 'column', gap: '16px', textAlign: 'center', alignItems: 'center' }}>
+                <div style={{ width: '56px', height: '56px', borderRadius: '999px', background: '#F2FEEE', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#33A544" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
+                </div>
+                <h2 style={{ fontFamily: "var(--font-source-serif),'Source Serif Pro',Georgia,serif", fontWeight: 400, fontSize: '28px', lineHeight: 1.2, color: '#222', margin: 0 }}>This video hasn&apos;t been analyzed yet</h2>
+                <p style={{ fontSize: '15px', lineHeight: 1.55, color: '#3B3B3C', margin: 0, maxWidth: '380px' }}>
+                  <strong>{an.title}</strong> by {an.channel} is in our queue. Be the first parent to request a full analysis.
+                </p>
+                <button onClick={() => goScreen('home')} style={{ height: '48px', padding: '0 28px', borderRadius: '12px', background: '#1A7E22', color: '#fff', fontFamily: "'Lato',sans-serif", fontWeight: 700, fontSize: '15px', border: 'none', cursor: 'pointer' }}>Analyze this video</button>
+                <div style={{ fontSize: '12px', color: '#757575' }}>Paste the YouTube link on the home screen to start.</div>
+              </section>
+            </div>
+            );
+          })()}
 
           {/* ================= GENRE DETAIL ================= */}
           {screen === 'genre' && (
