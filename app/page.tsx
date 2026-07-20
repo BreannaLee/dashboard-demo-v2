@@ -523,7 +523,7 @@ export default function Dashboard() {
   const childInitial = childName.charAt(0);
   const childAgeVal = obAge || '9';
 
-  const titles: Record<string, string> = { home: 'Kids Safe Video Analyzer', analysis: 'Video Analysis', tedio: 'Watch History', watchlist: 'Creator Leaderboard', activity: 'Parent Activity', genre: 'Category', channel: 'Channel' };
+  const titles: Record<string, string> = { home: 'Kids Safe Video Analyzer', analysis: 'Video Analysis', tedio: 'Watch History', watchlist: 'Creator Leaderboard', activity: 'Community', genre: 'Category', channel: 'Channel' };
 
   const decorate = (a: Analysis) => ({
     ...a,
@@ -725,13 +725,13 @@ export default function Dashboard() {
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M8 6h13"></path><path d="M8 12h13"></path><path d="M8 18h13"></path><path d="M3 6h.01"></path><path d="M3 12h.01"></path><path d="M3 18h.01"></path></svg>
             Creator Leaderboard
           </button>
+          <button onClick={() => goScreen('activity')} style={navStyle(screen === 'activity')}>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+            Community
+          </button>
           <button onClick={() => goScreen('tedio')} style={navStyle(screen === 'tedio')}>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
             Watch History
-          </button>
-          <button onClick={() => goScreen('activity')} style={navStyle(screen === 'activity')}>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-            Parent Activity
           </button>
         </div>
 
@@ -798,7 +798,7 @@ export default function Dashboard() {
                   <p style={{ fontSize: '13px', color: '#757575', margin: '0 0 16px' }}>The content types kids are watching most, grouped by age and creator.</p>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
                     {CATEGORY_DATA.map(cat => (
-                      <div key={cat.id} onClick={() => { setCurrentGenre(cat.id); setScreen('genre'); }} style={{ display: 'flex', flexWrap: 'wrap', gap: '8px 18px', alignItems: 'center', background: '#fff', borderRadius: '12px', overflow: 'hidden', border: '1px solid #EFEFEF', cursor: 'pointer' }}>
+                      <div key={cat.id} onClick={() => { setCurrentGenre(cat.id); setScreen('genre'); }} style={{ display: 'flex', flexWrap: 'wrap', gap: '8px 18px', alignItems: 'center', background: '#ECFAFF', borderRadius: '12px', overflow: 'hidden', border: '1px solid #EFEFEF', cursor: 'pointer' }}>
                         <div style={{ position: 'relative', flex: '1 1 260px', minWidth: '200px', display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 0, padding: 0, borderRadius: '4px', overflow: 'hidden' }}>
                           {cat.tiles.slice(0, 3).map((tile, ti) => (
                             <div key={ti} style={{ position: 'relative', height: '140px', display: 'flex', alignItems: 'flex-end', padding: '6px 7px', overflow: 'hidden', background: tile.color }}>
