@@ -842,8 +842,12 @@ export default function Dashboard() {
 
           {/* ================= ANALYSIS DETAIL ================= */}
           {screen === 'analysis' && (
-            <div style={{ maxWidth: '1120px', margin: '0 auto', padding: '24px 40px 56px' }}>
-              <button onClick={() => goScreen('home')} style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', border: 'none', background: 'transparent', fontFamily: "'Lato',sans-serif", fontSize: '13px', fontWeight: 700, color: '#757575', cursor: 'pointer', padding: '0 0 16px' }}>&larr; Back to Analyzer</button>
+            <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+              <div style={{ padding: '12px 40px 0' }}>
+                <button onClick={() => goScreen('home')} style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', border: 'none', background: 'transparent', fontFamily: "'Lato',sans-serif", fontSize: '13px', fontWeight: 700, color: '#757575', cursor: 'pointer', padding: '0 0 8px' }}>&larr; Back to Analyzer</button>
+              </div>
+              <iframe src="https://video-analyzer-dev.commonsense.org/video/analysis/69c8286e-25c1-4df2-82ff-7fc6ea226897" style={{ flex: 1, width: '100%', border: 'none', minHeight: 'calc(100vh - 120px)' }} title="Video Analysis" />
+              <div style={{ display: 'none' }}>
 
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: '28px', alignItems: 'start', marginBottom: '28px' }}>
                 <div style={{ width: '100%', aspectRatio: '16/9', borderRadius: '6px', background: decorate(an).bgStyle, position: 'relative', overflow: 'hidden' }}></div>
@@ -989,6 +993,7 @@ export default function Dashboard() {
                   </div>
                 </div>
               </section>
+              </div>
             </div>
           )}
 
