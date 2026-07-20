@@ -1189,99 +1189,21 @@ export default function Dashboard() {
 
           {/* ================= TEDIO / WATCH HISTORY ================= */}
           {screen === 'tedio' && (
-            <div>
-              {true ? (
-                <div style={{ maxWidth: '560px', margin: '80px auto', padding: '0 24px' }}>
-                    <section style={{ background: '#fff', border: '1px solid #33A544', borderRadius: '12px', boxShadow: '0 2px 8px rgba(0,0,0,0.10)', padding: '40px 36px 36px', display: 'flex', flexDirection: 'column', gap: '16px', textAlign: 'center', alignItems: 'center' }}>
-                      <div style={{ width: '56px', height: '56px', borderRadius: '999px', background: '#F2FEEE', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#33A544" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                      </div>
-                      <div style={{ fontFamily: "'Lato',sans-serif", fontWeight: 700, fontSize: '11px', letterSpacing: '0.1em', textTransform: 'uppercase', color: '#33A544' }}>Coming soon</div>
-                      <h2 style={{ fontFamily: "var(--font-source-serif),'Source Serif Pro',Georgia,serif", fontWeight: 400, fontSize: '32px', lineHeight: 1.15, color: '#222', margin: 0 }}>Watch History is in beta</h2>
-                      <p style={{ fontSize: '15px', lineHeight: 1.55, color: '#3B3B3C', margin: 0, maxWidth: '420px' }}>We&apos;re building a tool that analyzes your child&apos;s YouTube history to reveal hidden patterns — autoplay traps, Shorts loops, late-night sessions, and more.</p>
-                      <p style={{ fontSize: '14px', lineHeight: 1.5, color: '#757575', margin: 0 }}>Be the first to know when it&apos;s ready.</p>
-                      <div style={{ display: 'flex', gap: '10px', width: '100%', maxWidth: '400px' }}>
-                        <input placeholder="Your email address" style={{ flex: 1, height: '48px', borderRadius: '12px', background: '#fff', border: '1px solid #CCCCCC', padding: '0 16px', fontFamily: "'Lato',sans-serif", fontSize: '14px', color: '#222', outline: 'none' }} />
-                        <button style={{ height: '48px', padding: '0 24px', borderRadius: '12px', background: '#1A7E22', color: '#fff', fontFamily: "'Lato',sans-serif", fontWeight: 700, fontSize: '15px', border: 'none', cursor: 'pointer', whiteSpace: 'nowrap' }}>Join waitlist</button>
-                      </div>
-                      <div style={{ fontSize: '12px', color: '#757575' }}>No spam — just one email when we launch.</div>
-                    </section>
-                  ) : (
-                    <section style={{ background: '#fff', border: '1px solid #33A544', borderRadius: '12px', boxShadow: '0 2px 8px rgba(0,0,0,0.10)', padding: '36px 36px 32px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
-                      <h5 style={{ fontFamily: "'Lato',sans-serif", fontWeight: 700, fontSize: '12px', letterSpacing: '0.08em', textTransform: 'uppercase', color: '#757575', margin: 0 }}>Step 2 of 2</h5>
-                      <h2 style={{ fontFamily: "var(--font-source-serif),'Source Serif Pro',Georgia,serif", fontWeight: 400, fontSize: '32px', lineHeight: 1.15, color: '#33A544', margin: 0 }}>Let&apos;s see what YouTube sees</h2>
-                      <p style={{ fontSize: '14px', lineHeight: 1.55, color: '#3B3B3C', margin: 0 }}>Upload {obName || "your kid"}&apos;s YouTube watch history and we&apos;ll reveal the hidden patterns &mdash; autoplay traps, Shorts loops, late-night sessions.</p>
-                      <ol style={{ margin: 0, paddingLeft: '20px', display: 'flex', flexDirection: 'column', gap: '8px', fontSize: '14px', lineHeight: 1.5, color: '#222' }}>
-                        <li>Download the YouTube data from Google Takeout (free, 2 min)</li>
-                        <li>Upload <span style={{ fontFamily: 'ui-monospace,Menlo,monospace', fontSize: '12px', background: '#F7F7F7', padding: '2px 6px', borderRadius: '4px' }}>watch-history.json</span> here</li>
-                        <li>Get a personalized report with next steps</li>
-                      </ol>
-                      <div style={{ border: '2px dashed #CCCCCC', borderRadius: '12px', padding: '26px', textAlign: 'center', color: '#757575', fontSize: '13px' }}>Drag and drop watch-history.json here</div>
-                      <button onClick={() => setChildAdded(true)} style={{ height: '48px', borderRadius: '999px', background: '#1A7E22', color: '#fff', fontFamily: "'Lato',sans-serif", fontWeight: 700, fontSize: '15px', border: 'none', cursor: 'pointer' }}>Use sample data for this demo</button>
-                      <div style={{ fontSize: '12px', color: '#757575', textAlign: 'center' }}>Your data stays private and is never shared.</div>
-                    </section>
-                  )}
+            <div style={{ maxWidth: '560px', margin: '80px auto', padding: '0 24px' }}>
+              <section style={{ background: '#fff', border: '1px solid #33A544', borderRadius: '12px', boxShadow: '0 2px 8px rgba(0,0,0,0.10)', padding: '40px 36px 36px', display: 'flex', flexDirection: 'column', gap: '16px', textAlign: 'center', alignItems: 'center' }}>
+                <div style={{ width: '56px', height: '56px', borderRadius: '999px', background: '#F2FEEE', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#33A544" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
                 </div>
-              ) : (
-                <div style={{ maxWidth: '980px', margin: '0 auto', padding: '28px 40px 56px' }}>
-                  <div style={{ marginBottom: '22px' }}>
-                    <h1 style={{ fontFamily: "var(--font-source-serif),'Source Serif Pro',Georgia,serif", fontWeight: 400, fontSize: '36px', lineHeight: 1.15, color: '#222', margin: '0 0 6px' }}>{childName}&apos;s week on YouTube</h1>
-                    <p style={{ fontSize: '15px', color: '#3B3B3C', margin: 0 }}>YouTube is designed to keep {childName} watching. Here&apos;s how it&apos;s working &mdash; and what to do about it.</p>
-                  </div>
-
-                  <div style={{ background: '#F2FEEE', borderRadius: '12px', padding: '14px 18px', marginBottom: '24px', display: 'flex', gap: '10px', alignItems: 'center' }}>
-                    <span style={{ width: '22px', height: '22px', flex: '0 0 22px', borderRadius: '999px', background: '#33A544', color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '12px', fontWeight: 900 }}>{'\u2713'}</span>
-                    <span style={{ fontSize: '14px', color: '#222' }}><strong>Good news:</strong> Thumbnail Roulette is low at 31% &mdash; {childName}&apos;s channel variety looks healthy.</span>
-                  </div>
-
-                  <h5 style={{ fontFamily: "'Lato',sans-serif", fontWeight: 700, fontSize: '13px', letterSpacing: '0.08em', textTransform: 'uppercase', color: '#222', margin: '0 0 12px' }}>Behavioral patterns we found</h5>
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '28px' }}>
-                    {PATTERNS.map(p => (
-                      <div key={p.name} style={{ background: '#fff', border: '1px solid #EFEFEF', borderRadius: '12px', boxShadow: '0 2px 8px rgba(0,0,0,0.10)', overflow: 'hidden' }}>
-                        <div style={{ height: '6px', background: p.color }}></div>
-                        <div style={{ padding: '18px 20px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                          <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: '10px' }}>
-                            <h4 style={{ fontFamily: "'Lato',sans-serif", fontWeight: 700, fontSize: '16px', color: '#222', margin: 0 }}>{p.name}</h4>
-                            <span style={{ fontFamily: "var(--font-source-serif),'Source Serif Pro',Georgia,serif", fontSize: '30px', color: p.color }}>{p.score}%</span>
-                          </div>
-                          <div style={{ height: '6px', borderRadius: '999px', background: '#EFEFEF', overflow: 'hidden' }}><div style={{ height: '100%', width: `${p.score}%`, background: p.color, borderRadius: '999px' }}></div></div>
-                          <p style={{ fontSize: '13px', lineHeight: 1.5, color: '#3B3B3C', margin: 0 }}>{p.desc}</p>
-                          <div style={{ fontSize: '12px', color: '#757575' }}><strong style={{ color: '#3B3B3C' }}>How it manipulates:</strong> {p.dark}</div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px', alignItems: 'start' }}>
-                    <section style={{ background: '#fff', border: '1px solid #33A544', borderRadius: '12px', boxShadow: '0 2px 8px rgba(0,0,0,0.10)', overflow: 'hidden' }}>
-                      <div style={{ background: '#33A544', color: '#fff', padding: '10px 16px', fontWeight: 700, fontSize: '13px' }}>CHANNEL BREAKDOWN</div>
-                      <div style={{ padding: '8px 0' }}>
-                        {CHANNELS.map(ch => (
-                          <div key={ch.name} style={{ display: 'flex', alignItems: 'center', gap: '10px', padding: '9px 16px' }}>
-                            <span style={{ width: '24px', height: '24px', flex: '0 0 24px', borderRadius: '6px', background: ch.badgeBg, color: ch.badgeFg, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '11px', fontWeight: 900 }}>{ch.badge}</span>
-                            <span style={{ fontSize: '14px', fontWeight: 700, color: '#222', flex: 1 }}>{ch.name}</span>
-                            <span style={{ fontSize: '13px', color: '#757575' }}>{ch.mins} min</span>
-                          </div>
-                        ))}
-                        <div style={{ padding: '8px 16px 12px', fontSize: '12px', color: '#999999' }}>E = Educational \u00b7 N = Neutral \u00b7 J = Junk</div>
-                      </div>
-                    </section>
-
-                    <section style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                      <h5 style={{ fontFamily: "'Lato',sans-serif", fontWeight: 700, fontSize: '13px', letterSpacing: '0.08em', textTransform: 'uppercase', color: '#222', margin: 0 }}>Quick fixes \u00b7 ~15 min each</h5>
-                      {FIXES.map(f => (
-                        <div key={f.name} style={{ background: '#fff', border: '1px solid #EFEFEF', borderRadius: '12px', padding: '14px 16px', display: 'flex', flexDirection: 'column', gap: '4px' }}>
-                          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                            <span style={{ fontSize: '14px', fontWeight: 700, color: '#222' }}>{f.name}</span>
-                            <a href="#" style={{ fontSize: '12px', fontWeight: 700 }}>See how</a>
-                          </div>
-                          <span style={{ fontSize: '12px', color: '#757575' }}>Helps fix {f.helps}</span>
-                        </div>
-                      ))}
-                    </section>
-                  </div>
+                <div style={{ fontFamily: "'Lato',sans-serif", fontWeight: 700, fontSize: '11px', letterSpacing: '0.1em', textTransform: 'uppercase', color: '#33A544' }}>Coming soon</div>
+                <h2 style={{ fontFamily: "var(--font-source-serif),'Source Serif Pro',Georgia,serif", fontWeight: 400, fontSize: '32px', lineHeight: 1.15, color: '#222', margin: 0 }}>Watch History is in beta</h2>
+                <p style={{ fontSize: '15px', lineHeight: 1.55, color: '#3B3B3C', margin: 0, maxWidth: '420px' }}>We&apos;re building a tool that analyzes your child&apos;s YouTube history to reveal hidden patterns — autoplay traps, Shorts loops, late-night sessions, and more.</p>
+                <p style={{ fontSize: '14px', lineHeight: 1.5, color: '#757575', margin: 0 }}>Be the first to know when it&apos;s ready.</p>
+                <div style={{ display: 'flex', gap: '10px', width: '100%', maxWidth: '400px' }}>
+                  <input placeholder="Your email address" style={{ flex: 1, height: '48px', borderRadius: '12px', background: '#fff', border: '1px solid #CCCCCC', padding: '0 16px', fontFamily: "'Lato',sans-serif", fontSize: '14px', color: '#222', outline: 'none' }} />
+                  <button style={{ height: '48px', padding: '0 24px', borderRadius: '12px', background: '#1A7E22', color: '#fff', fontFamily: "'Lato',sans-serif", fontWeight: 700, fontSize: '15px', border: 'none', cursor: 'pointer', whiteSpace: 'nowrap' }}>Join waitlist</button>
                 </div>
-              )}
+                <div style={{ fontSize: '12px', color: '#757575' }}>No spam — just one email when we launch.</div>
+              </section>
             </div>
           )}
 
