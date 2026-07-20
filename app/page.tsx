@@ -312,18 +312,18 @@ const CATEGORY_DATA = [
       { name: 'Cocomelon', color: '#423FE1', img: '/cat-music-0.webp' },
       { name: 'Pinkfong', color: '#1A7E22', img: '/cat-music-1.webp' },
       { name: 'Super Simple Songs', color: '#2B3A8E', img: '/cat-music-2.webp' },
-      { name: 'ChuChu TV', color: '#D8690E', img: '/cat-music-3.webp' },
-      { name: 'Little Baby Bum', color: '#FFC60B', img: '/cat-music-4.webp' },
-      { name: 'Ms. Rachel', color: '#33A544', img: '/cat-music-5.webp' },
+      { name: 'ChuChu TV', color: '#D8690E', img: '/chan-music-0.webp' },
+      { name: 'Little Baby Bum', color: '#FFC60B', img: '/chan-music-1.webp' },
+      { name: 'Ms. Rachel', color: '#33A544', img: '/chan-music-2.webp' },
     ] },
   { id: 'challenge', eyebrow: 'ages 8-11+', name: 'Challenge, Stunt & Comedy Entertainment', sample: 'Challenge videos, Stunts, Pranks & Comedy content popular among tweens',
     accent: '#D8690E', tiles: [
       { name: 'MrBeast', color: '#D8690E', img: '/cat-challenge-0.webp' },
       { name: 'Dude Perfect', color: '#FFC60B', img: '/cat-challenge-1.webp' },
       { name: 'LazarBeam', color: '#8848C1', img: '/cat-challenge-2.webp' },
-      { name: 'Unspeakable', color: '#423FE1' },
-      { name: '5-Minute Crafts', color: '#1A7E22' },
-      { name: 'Zach King', color: '#E8843A' },
+      { name: 'Unspeakable', color: '#423FE1', img: '/chan-challenge-0.webp' },
+      { name: '5-Minute Crafts', color: '#1A7E22', img: '/chan-challenge-1.webp' },
+      { name: 'Zach King', color: '#E8843A', img: '/chan-challenge-2.webp' },
     ] },
   { id: 'gaming', eyebrow: 'ages 8-11+', name: 'Gaming', sample: 'Roblox, Minecraft, Gaming Streaming content popular among teens & pre-teens',
     accent: '#8848C1', tiles: [
@@ -523,7 +523,7 @@ export default function Dashboard() {
   const childInitial = childName.charAt(0);
   const childAgeVal = obAge || '9';
 
-  const titles: Record<string, string> = { home: 'Kids Safe Video Analyzer', analysis: 'Video Analysis', tedio: 'Watch History', watchlist: 'Creator Leaderboard', activity: 'Community', genre: 'Category', channel: 'Channel' };
+  const titles: Record<string, string> = { home: 'Kids Safe Video Analyzer', analysis: 'Video Analysis', tedio: 'Watch History', watchlist: 'Creator Leaderboard', activity: 'Community', genre: 'Category', channel: 'Channel', allvideos: 'All Analyzed Videos' };
 
   const decorate = (a: Analysis) => ({
     ...a,
@@ -713,7 +713,7 @@ export default function Dashboard() {
       {/* ============ SIDEBAR ============ */}
       <nav style={{ width: '236px', flex: '0 0 236px', background: '#FFFFFF', borderRight: '1px solid #EFEFEF', display: 'flex', flexDirection: 'column', padding: '20px 14px 16px' }}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/horizontal-fullcolor.svg" alt="Common Sense Media" style={{ width: '170px', margin: '4px 8px 6px' }} />
+        <img src="/horizontal-fullcolor.svg" alt="Common Sense Media" onClick={() => goScreen('home')} style={{ width: '170px', margin: '4px 8px 6px', cursor: 'pointer' }} />
         <div style={{ margin: '2px 8px 22px', fontSize: '11px', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#33A544' }}>YouTube Family Dashboard</div>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
@@ -793,7 +793,7 @@ export default function Dashboard() {
                 <section>
                   <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', marginBottom: '6px' }}>
                     <h5 style={{ fontFamily: "'Lato',sans-serif", fontWeight: 700, fontSize: '13px', letterSpacing: '0.08em', textTransform: 'uppercase', color: '#222', margin: 0 }}>Trending Categories</h5>
-                    <a href="#" style={{ fontSize: '13px', fontWeight: 700 }}>View all</a>
+                    <a href="#" onClick={(e) => { e.preventDefault(); setScreen('allvideos'); }} style={{ fontSize: '13px', fontWeight: 700 }}>View all</a>
                   </div>
                   <p style={{ fontSize: '13px', color: '#757575', margin: '0 0 16px' }}>The content types kids are watching most, grouped by age and creator.</p>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
@@ -817,7 +817,7 @@ export default function Dashboard() {
                       </div>
                     ))}
                   </div>
-                  <button style={{ width: '100%', marginTop: '16px', padding: '12px', border: '1px solid #33A544', borderRadius: '8px', background: '#fff', fontFamily: "'Lato',sans-serif", fontWeight: 700, fontSize: '13px', color: '#1A7E22', cursor: 'pointer' }}>See all categories</button>
+{/* "See all categories" removed per design update */}
                 </section>
 
                 <aside style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
@@ -1031,6 +1031,7 @@ export default function Dashboard() {
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))', gap: '16px' }}>
                 {curGenreData.tiles.map((ch, i) => (
                   <div key={i} onClick={() => { setCurrentChannel({ name: ch.name, color: ch.color, genreName: curGenreData.name, genreId: curGenreData.id }); setScreen('channel'); }} style={{ position: 'relative', aspectRatio: '2/3', borderRadius: '10px', overflow: 'hidden', cursor: 'pointer', background: ch.color, boxShadow: '0 2px 8px rgba(0,0,0,0.12)' }}>
+                    {(ch as {img?: string}).img && <img src={(ch as {img?: string}).img} alt={ch.name} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />}
                     <span style={{ position: 'absolute', inset: 0, pointerEvents: 'none', background: 'linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.08) 45%, rgba(0,0,0,0) 68%)' }}></span>
                     <span style={{ position: 'absolute', bottom: '12px', left: '12px', right: '12px', zIndex: 2, pointerEvents: 'none', color: '#fff', fontFamily: "'Lato',sans-serif", fontWeight: 700, fontSize: '15px', lineHeight: 1.2, textShadow: '0 1px 3px rgba(0,0,0,.5)' }}>{ch.name}</span>
                   </div>
@@ -1120,22 +1121,90 @@ export default function Dashboard() {
             </div>
           )}
 
+          {/* ================= ALL ANALYZED VIDEOS ================= */}
+          {screen === 'allvideos' && (() => {
+            const allVids = Object.values(genreVideos).flat();
+            const catOptions = ['All categories', ...CATEGORY_DATA.map(c => c.name)];
+            return (
+            <div style={{ maxWidth: '1120px', margin: '0 auto', padding: '24px 40px 56px' }}>
+              <button onClick={() => goScreen('home')} style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', border: 'none', background: 'transparent', fontFamily: "'Lato',sans-serif", fontSize: '13px', fontWeight: 700, color: '#757575', cursor: 'pointer', padding: '0 0 16px' }}>&larr; Back to Analyzer</button>
+              <div style={{ marginBottom: '10px', fontSize: '13px', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#33A544' }}>All Analyses</div>
+              <h1 style={{ fontFamily: "var(--font-source-serif),'Source Serif Pro',Georgia,serif", fontWeight: 700, fontSize: '36px', lineHeight: 1.15, color: '#222', margin: '0 0 14px' }}>Every video we&apos;ve analyzed</h1>
+              <p style={{ fontSize: '15px', lineHeight: 1.55, color: '#3B3B3C', margin: '0 0 24px', maxWidth: '660px' }}>Browse all analyzed videos across every category. Use the filters to find what matters to your family.</p>
+
+              {/* Filter bar — reuses leaderboard filter style */}
+              <section style={{ border: '1px solid #CCCCCC', borderRadius: '12px', background: '#fff', marginBottom: '14px', padding: '15px 20px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '16px', flexWrap: 'wrap' }}>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#222" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg>
+                  <span style={{ fontSize: '13px', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#222' }}>Filter by category</span>
+                  <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+                    {catOptions.map(opt => {
+                      const active = (wlGenres[0] === 'All genres' && opt === 'All categories') || wlGenres.includes(opt);
+                      return (
+                        <button key={opt} onClick={() => setWlGenres(opt === 'All categories' ? ['All genres'] : [opt])} style={{ fontFamily: "'Lato',sans-serif", fontWeight: 700, fontSize: '12px', letterSpacing: '0.02em', border: active ? '1px solid #33A544' : '1px solid #D9D9D9', cursor: 'pointer', padding: '7px 14px', borderRadius: '999px', background: active ? '#33A544' : '#fff', color: active ? '#fff' : '#54565A', whiteSpace: 'nowrap' }}>
+                          {active && opt !== 'All categories' ? '\u2713 ' : ''}{opt}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+              </section>
+
+              {/* Concern legend */}
+              <div style={{ display: 'flex', alignItems: 'center', gap: '18px', flexWrap: 'wrap', background: '#F7F7F7', borderRadius: '12px', padding: '13px 20px', marginBottom: '20px' }}>
+                <span style={{ fontSize: '13px', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#222' }}>Concern level</span>
+                <span style={{ width: '1px', height: '16px', background: '#CCCCCC' }}></span>
+                {Object.values(LEVELS).map(l => (
+                  <span key={l.label} style={{ display: 'inline-flex', alignItems: 'center', gap: '7px', fontSize: '14px', fontWeight: 700, color: '#222' }}>
+                    <span style={{ width: '13px', height: '13px', borderRadius: '3px', background: l.bg }}></span>{l.label}
+                  </span>
+                ))}
+              </div>
+
+              {/* Video grid */}
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '22px' }}>
+                {allVids
+                  .filter(v => wlGenres[0] === 'All genres' || CATEGORY_DATA.some(c => c.name === wlGenres[0] && v.genre === c.id))
+                  .map(v => {
+                    const lev = LEVELS[v.level] || LEVELS.moderate;
+                    return (
+                      <button key={v.id} onClick={() => { setCurrentId(v.id); setScreen('analysis'); }} style={{ textAlign: 'left', background: '#fff', border: '1px solid #EFEFEF', borderRadius: '12px', padding: '10px 10px 14px', fontFamily: "'Lato',sans-serif", cursor: 'pointer', display: 'flex', flexDirection: 'column', gap: '9px', boxShadow: '0 1px 3px rgba(0,0,0,0.06)' }}>
+                        <div style={{ position: 'relative', aspectRatio: '16/9', borderRadius: '8px', overflow: 'hidden', background: v.thumb ? 'transparent' : '#ddd' }}>
+                          {v.thumb && <img src={v.thumb} alt={v.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />}
+                          <span style={{ position: 'absolute', bottom: '8px', right: '8px', zIndex: 2, background: 'rgba(0,0,0,0.8)', color: '#fff', fontSize: '11px', fontWeight: 700, padding: '2px 6px', borderRadius: '4px' }}>{v.duration || '0:00'}</span>
+                        </div>
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                          <span style={{ display: 'inline-flex', padding: '3px 8px', borderRadius: '6px', fontSize: '10px', fontWeight: 800, background: lev.bg, color: lev.fg }}>{lev.label}</span>
+                          <span style={{ fontSize: '12px', color: '#757575' }}>Ages {v.age}</span>
+                        </div>
+                        <div style={{ fontSize: '14px', fontWeight: 700, color: '#222', lineHeight: 1.35 }}>{v.title}</div>
+                        <div style={{ fontSize: '13px', color: '#757575' }}>{v.channel} &middot; {v.flags.length} flagged moments</div>
+                      </button>
+                    );
+                  })}
+              </div>
+            </div>
+            );
+          })()}
+
           {/* ================= TEDIO / WATCH HISTORY ================= */}
           {screen === 'tedio' && (
             <div>
-              {!childAdded ? (
-                <div style={{ maxWidth: '560px', margin: '48px auto', padding: '0 24px' }}>
-                  {obStep === 0 ? (
-                    <section style={{ background: '#fff', border: '1px solid #33A544', borderRadius: '12px', boxShadow: '0 2px 8px rgba(0,0,0,0.10)', padding: '36px 36px 32px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
-                      <h5 style={{ fontFamily: "'Lato',sans-serif", fontWeight: 700, fontSize: '12px', letterSpacing: '0.08em', textTransform: 'uppercase', color: '#757575', margin: 0 }}>Step 1 of 2</h5>
-                      <h2 style={{ fontFamily: "var(--font-source-serif),'Source Serif Pro',Georgia,serif", fontWeight: 400, fontSize: '32px', lineHeight: 1.15, color: '#33A544', margin: 0 }}>Who are we checking on?</h2>
-                      <p style={{ fontSize: '14px', lineHeight: 1.55, color: '#3B3B3C', margin: 0 }}>As kids get older, screening every video stops being realistic. We&apos;ll analyze their YouTube history instead &mdash; and show you the patterns that matter.</p>
-                      <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                        <input value={obName} onChange={e => setObName(e.target.value)} placeholder="Kid's name" style={{ height: '48px', borderRadius: '12px', background: '#fff', border: '1px solid #CCCCCC', padding: '0 16px', fontFamily: "'Lato',sans-serif", fontSize: '14px', color: '#222', outline: 'none' }} />
-                        <input value={obAge} onChange={e => setObAge(e.target.value)} placeholder="Kid's age" style={{ height: '48px', borderRadius: '12px', background: '#fff', border: '1px solid #CCCCCC', padding: '0 16px', fontFamily: "'Lato',sans-serif", fontSize: '14px', color: '#222', outline: 'none' }} />
+              {true ? (
+                <div style={{ maxWidth: '560px', margin: '80px auto', padding: '0 24px' }}>
+                    <section style={{ background: '#fff', border: '1px solid #33A544', borderRadius: '12px', boxShadow: '0 2px 8px rgba(0,0,0,0.10)', padding: '40px 36px 36px', display: 'flex', flexDirection: 'column', gap: '16px', textAlign: 'center', alignItems: 'center' }}>
+                      <div style={{ width: '56px', height: '56px', borderRadius: '999px', background: '#F2FEEE', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#33A544" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
                       </div>
-                      <button onClick={() => setObStep(1)} style={{ height: '48px', borderRadius: '999px', background: '#1A7E22', color: '#fff', fontFamily: "'Lato',sans-serif", fontWeight: 700, fontSize: '15px', border: 'none', cursor: 'pointer' }}>Continue</button>
-                      <div style={{ fontSize: '12px', color: '#757575', textAlign: 'center' }}>One profile per child &mdash; you can add more later.</div>
+                      <div style={{ fontFamily: "'Lato',sans-serif", fontWeight: 700, fontSize: '11px', letterSpacing: '0.1em', textTransform: 'uppercase', color: '#33A544' }}>Coming soon</div>
+                      <h2 style={{ fontFamily: "var(--font-source-serif),'Source Serif Pro',Georgia,serif", fontWeight: 400, fontSize: '32px', lineHeight: 1.15, color: '#222', margin: 0 }}>Watch History is in beta</h2>
+                      <p style={{ fontSize: '15px', lineHeight: 1.55, color: '#3B3B3C', margin: 0, maxWidth: '420px' }}>We&apos;re building a tool that analyzes your child&apos;s YouTube history to reveal hidden patterns — autoplay traps, Shorts loops, late-night sessions, and more.</p>
+                      <p style={{ fontSize: '14px', lineHeight: 1.5, color: '#757575', margin: 0 }}>Be the first to know when it&apos;s ready.</p>
+                      <div style={{ display: 'flex', gap: '10px', width: '100%', maxWidth: '400px' }}>
+                        <input placeholder="Your email address" style={{ flex: 1, height: '48px', borderRadius: '12px', background: '#fff', border: '1px solid #CCCCCC', padding: '0 16px', fontFamily: "'Lato',sans-serif", fontSize: '14px', color: '#222', outline: 'none' }} />
+                        <button style={{ height: '48px', padding: '0 24px', borderRadius: '12px', background: '#1A7E22', color: '#fff', fontFamily: "'Lato',sans-serif", fontWeight: 700, fontSize: '15px', border: 'none', cursor: 'pointer', whiteSpace: 'nowrap' }}>Join waitlist</button>
+                      </div>
+                      <div style={{ fontSize: '12px', color: '#757575' }}>No spam — just one email when we launch.</div>
                     </section>
                   ) : (
                     <section style={{ background: '#fff', border: '1px solid #33A544', borderRadius: '12px', boxShadow: '0 2px 8px rgba(0,0,0,0.10)', padding: '36px 36px 32px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
