@@ -719,7 +719,7 @@ export default function Dashboard() {
     <div style={{ display: 'flex', height: '100vh', overflow: 'hidden', background: '#F7F7F7', fontFamily: "var(--font-lato),'Lato',-apple-system,sans-serif", color: '#222222' }}>
 
       {/* ============ SIDEBAR ============ */}
-      <nav style={{ width: '236px', flex: '0 0 236px', background: '#FFFFFF', borderRight: '1px solid #EFEFEF', display: screen === 'analysis' ? 'none' : 'flex', flexDirection: 'column', padding: '20px 14px 16px' }}>
+      <nav style={{ width: '236px', flex: '0 0 236px', background: '#FFFFFF', borderRight: '1px solid #EFEFEF', display: 'flex', flexDirection: 'column', padding: '20px 14px 16px' }}>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src="/horizontal-fullcolor.svg" alt="Common Sense Media" onClick={() => goScreen('home')} style={{ width: '170px', margin: '4px 8px 6px', cursor: 'pointer' }} />
         <div style={{ margin: '2px 8px 22px', fontSize: '11px', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#33A544' }}>YouTube Family Dashboard</div>
@@ -766,7 +766,7 @@ export default function Dashboard() {
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', minWidth: 0 }}>
 
         {/* Top bar */}
-        <header style={{ height: '60px', flex: '0 0 60px', background: '#FFFFFF', borderBottom: '1px solid #EFEFEF', display: screen === 'analysis' ? 'none' : 'flex', alignItems: 'center', gap: '16px', padding: '0 28px' }}>
+        <header style={{ height: '60px', flex: '0 0 60px', background: '#FFFFFF', borderBottom: '1px solid #EFEFEF', display: 'flex', alignItems: 'center', gap: '16px', padding: '0 28px' }}>
           <div style={{ fontSize: '15px', fontWeight: 700, color: '#222' }}>{titles[screen] || 'Dashboard'}</div>
           <div style={{ marginLeft: 'auto' }}></div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
@@ -846,7 +846,7 @@ export default function Dashboard() {
               <div style={{ padding: '12px 40px 0' }}>
                 <button onClick={() => goScreen('home')} style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', border: 'none', background: 'transparent', fontFamily: "'Lato',sans-serif", fontSize: '13px', fontWeight: 700, color: '#757575', cursor: 'pointer', padding: '0 0 8px' }}>&larr; Back to Analyzer</button>
               </div>
-              <iframe src="https://video-analyzer-dev.commonsense.org/video/analysis/69c8286e-25c1-4df2-82ff-7fc6ea226897" style={{ flex: 1, width: '100%', border: 'none', minHeight: 'calc(100vh - 50px)' }} title="Video Analysis" />
+              <iframe src="https://video-analyzer-dev.commonsense.org/video/analysis/69c8286e-25c1-4df2-82ff-7fc6ea226897" style={{ flex: 1, width: '100%', border: 'none', minHeight: 'calc(100vh - 120px)' }} title="Video Analysis" />
               <div style={{ display: 'none' }}>
 
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: '28px', alignItems: 'start', marginBottom: '28px' }}>
