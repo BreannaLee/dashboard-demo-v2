@@ -161,30 +161,30 @@ const TRENDING = [
 
 interface Creator {
   name: string; age: string; views: string; level: string;
-  avatarBg: string; avatarTint: string; avatarFg: string;
+  avatarBg: string; avatarTint: string; avatarFg: string; avatarImg?: string;
   genres: string[]; seen: boolean; blurb: string; tags: string[];
 }
 
 const CREATORS: Creator[] = [
-  { name: 'James Charles', age: '16+', views: '754K views', level: 'veryhigh', avatarBg: '#8848C1', avatarTint: '#F3EAFB', avatarFg: '#8848C1', genres: ['Beauty / Makeup / ASMR'], seen: false,
+  { name: 'James Charles', age: '16+', views: '754K views', level: 'veryhigh', avatarBg: '#8848C1', avatarTint: '#F3EAFB', avatarFg: '#8848C1', avatarImg: '/creator-james-charles.webp', genres: ['Beauty / Makeup / ASMR'], seen: false,
     blurb: 'Constant strong profanity, repeated sexual innuendo, alcohol references, and heavy advertising with direct buy/subscribe prompts.',
     tags: ['Language', 'Sex & romance', 'Drinking & drugs', 'Product & purchases'] },
-  { name: 'MrBeast', age: '9+', views: '143.8M views \u00b7 2 videos analyzed', level: 'veryhigh', avatarBg: '#2E6FB0', avatarTint: '#FBE9EC', avatarFg: '#BD081C', genres: ['Challenge, Stunt & Comedy Entertainment'], seen: true,
+  { name: 'MrBeast', age: '9+', avatarImg: '/creator-mrbeast.webp', views: '143.8M views \u00b7 2 videos analyzed', level: 'veryhigh', avatarBg: '#2E6FB0', avatarTint: '#FBE9EC', avatarFg: '#BD081C', genres: ['Challenge, Stunt & Comedy Entertainment'], seen: true,
     blurb: 'Very fast pacing throughout, frequent profanity, and heavy brand promotion \u2014 from shop-and-click prompts to constant prize/product placement.',
     tags: ['Attention capture', 'Language', 'Product & purchases'] },
-  { name: 'Kane Pixels', age: '13+', views: '~50M views', level: 'high', avatarBg: '#B8A94A', avatarTint: '#F5F0DC', avatarFg: '#8A7A2E', genres: ['Gaming'], seen: false,
+  { name: 'Kane Pixels', age: '13+', avatarImg: '/creator-kane-pixels.webp', views: '~50M views', level: 'high', avatarBg: '#B8A94A', avatarTint: '#F5F0DC', avatarFg: '#8A7A2E', genres: ['Gaming'], seen: false,
     blurb: 'A horror short built on intense, sustained scares and unsettling imagery, with repeated strong profanity.',
     tags: ['Violence & scariness', 'Language'] },
-  { name: 'Gibi ASMR', age: '13+', views: '438K views', level: 'high', avatarBg: '#E41177', avatarTint: '#FDE7F1', avatarFg: '#E41177', genres: ['Beauty / Makeup / ASMR'], seen: false,
+  { name: 'Gibi ASMR', age: '13+', avatarImg: '/creator-gibi-asmr.webp', views: '438K views', level: 'high', avatarBg: '#E41177', avatarTint: '#FDE7F1', avatarFg: '#E41177', genres: ['Beauty / Makeup / ASMR'], seen: false,
     blurb: 'A flirtatious, intimate roleplay with suggestive undertones, plus frequent luxury-brand placement and some alcohol and medication.',
     tags: ['Sex & romance', 'Product & purchases', 'Drinking & drugs'] },
-  { name: 'Sony Pictures (Resident Evil)', age: '17+', views: '4M views', level: 'moderate', avatarBg: '#6B2B2B', avatarTint: '#F2E4E4', avatarFg: '#6B2B2B', genres: ['Challenge, Stunt & Comedy Entertainment'], seen: false,
+  { name: 'Sony Pictures (Resident Evil)', age: '17+', avatarImg: '/creator-sony-pictures-resident-evil-.webp', views: '4M views', level: 'moderate', avatarBg: '#6B2B2B', avatarTint: '#F2E4E4', avatarFg: '#6B2B2B', genres: ['Challenge, Stunt & Comedy Entertainment'], seen: false,
     blurb: 'An intense, scary movie trailer rated for ages 17+, with brief mild profanity and on-screen text pushing the paid release.',
     tags: ['Violence & scariness', 'Language', 'Product & purchases'] },
-  { name: 'Blippi', age: '4+', views: '254K views', level: 'moderate', avatarBg: '#E88A2E', avatarTint: '#FDF0E2', avatarFg: '#D8690E', genres: ['Pretend Play, Toys & Family Adventure'], seen: false,
+  { name: 'Blippi', age: '4+', avatarImg: '/creator-blippi.webp', views: '254K views', level: 'moderate', avatarBg: '#E88A2E', avatarTint: '#FDF0E2', avatarFg: '#D8690E', genres: ['Pretend Play, Toys & Family Adventure'], seen: false,
     blurb: 'Very fast visual pacing that may overstimulate young kids, plus the Blippi logo on screen throughout and prompts to search for more.',
     tags: ['Attention capture', 'Product & purchases'] },
-  { name: 'Ms Rachel', age: '2+', views: '372M views', level: 'lower', avatarBg: '#4AAE7C', avatarTint: '#E9F7EF', avatarFg: '#1A7E22', genres: ['Music & Nursery Rhymes'], seen: true,
+  { name: 'Ms Rachel', age: '2+', avatarImg: '/creator-ms-rachel.webp', views: '372M views', level: 'lower', avatarBg: '#4AAE7C', avatarTint: '#E9F7EF', avatarFg: '#1A7E22', genres: ['Music & Nursery Rhymes'], seen: true,
     blurb: 'Gentle, age-appropriate learning content. The only concern is that several of her own branded toys are featured throughout.',
     tags: ['Product & purchases'] },
 ];
@@ -724,10 +724,6 @@ export default function Dashboard() {
           <button onClick={() => goScreen('watchlist')} style={navStyle(screen === 'watchlist')}>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M8 6h13"></path><path d="M8 12h13"></path><path d="M8 18h13"></path><path d="M3 6h.01"></path><path d="M3 12h.01"></path><path d="M3 18h.01"></path></svg>
             Creator Leaderboard
-          </button>
-          <button onClick={() => goScreen('activity')} style={navStyle(screen === 'activity')}>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-            Community
           </button>
           <button onClick={() => goScreen('tedio')} style={navStyle(screen === 'tedio')}>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
@@ -1289,7 +1285,9 @@ export default function Dashboard() {
                     setScreen('channel');
                   }} style={{ display: 'grid', gridTemplateColumns: '36px 110px minmax(0,1fr) 110px', gap: '20px', alignItems: 'center', padding: '22px 8px', borderBottom: '1px solid #EFEFEF', cursor: 'pointer' }}>
                     <span style={{ fontFamily: "var(--font-source-serif),'Source Serif Pro',Georgia,serif", fontSize: '26px', fontWeight: 700, color: '#BBBBBB', textAlign: 'center' }}>{c.rank}</span>
-                    <span style={{ width: '100px', height: '100px', borderRadius: '999px', background: c.avatarTint, border: '1px solid rgba(0,0,0,0.08)', color: c.avatarFg, display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700, fontSize: '34px' }}>{c.initial}</span>
+                    <span style={{ width: '100px', height: '100px', borderRadius: '999px', background: c.avatarTint, border: '1px solid rgba(0,0,0,0.08)', color: c.avatarFg, display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700, fontSize: '34px', overflow: 'hidden', position: 'relative' }}>
+                      {c.avatarImg ? <img src={c.avatarImg} alt={c.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} /> : c.initial}
+                    </span>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', minWidth: 0 }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
                         <span style={{ fontSize: '17px', fontWeight: 700, color: '#222' }}>{c.name}</span>
