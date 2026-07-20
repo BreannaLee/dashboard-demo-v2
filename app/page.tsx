@@ -309,45 +309,45 @@ const GENRE_PROFILES: Record<string, Record<string, number>> = {
 const CATEGORY_DATA = [
   { id: 'music', eyebrow: 'ages 2-4', name: 'Music & Nursery Rhymes', sample: 'Use these analyses to create Whitelist for YouTube Kids',
     accent: '#423FE1', tiles: [
-      { name: 'Cocomelon', color: '#423FE1' },
-      { name: 'Pinkfong', color: '#1A7E22' },
-      { name: 'Super Simple Songs', color: '#2B3A8E' },
-      { name: 'ChuChu TV', color: '#D8690E' },
-      { name: 'Little Baby Bum', color: '#FFC60B' },
-      { name: 'Ms. Rachel', color: '#33A544' },
+      { name: 'Cocomelon', color: '#423FE1', img: '/cat-music-0.webp' },
+      { name: 'Pinkfong', color: '#1A7E22', img: '/cat-music-1.webp' },
+      { name: 'Super Simple Songs', color: '#2B3A8E', img: '/cat-music-2.webp' },
+      { name: 'ChuChu TV', color: '#D8690E', img: '/cat-music-3.webp' },
+      { name: 'Little Baby Bum', color: '#FFC60B', img: '/cat-music-4.webp' },
+      { name: 'Ms. Rachel', color: '#33A544', img: '/cat-music-5.webp' },
     ] },
   { id: 'challenge', eyebrow: 'ages 8-11+', name: 'Challenge, Stunt & Comedy Entertainment', sample: 'Challenge videos, Stunts, Pranks & Comedy content popular among tweens',
     accent: '#D8690E', tiles: [
-      { name: 'MrBeast', color: '#D8690E' },
-      { name: 'Dude Perfect', color: '#FFC60B' },
-      { name: 'LazarBeam', color: '#8848C1' },
+      { name: 'MrBeast', color: '#D8690E', img: '/cat-challenge-0.webp' },
+      { name: 'Dude Perfect', color: '#FFC60B', img: '/cat-challenge-1.webp' },
+      { name: 'LazarBeam', color: '#8848C1', img: '/cat-challenge-2.webp' },
       { name: 'Unspeakable', color: '#423FE1' },
       { name: '5-Minute Crafts', color: '#1A7E22' },
       { name: 'Zach King', color: '#E8843A' },
     ] },
   { id: 'gaming', eyebrow: 'ages 8-11+', name: 'Gaming', sample: 'Roblox, Minecraft, Gaming Streaming content popular among teens & pre-teens',
     accent: '#8848C1', tiles: [
-      { name: 'DanTDM', color: '#8848C1' },
-      { name: 'Aphmau', color: '#423FE1' },
-      { name: 'LankyBox', color: '#D8690E' },
+      { name: 'DanTDM', color: '#8848C1', img: '/cat-gaming-0.webp' },
+      { name: 'Aphmau', color: '#423FE1', img: '/cat-gaming-1.webp' },
+      { name: 'LankyBox', color: '#D8690E', img: '/cat-gaming-2.webp' },
       { name: 'SSundee', color: '#1A7E22' },
       { name: 'Grian', color: '#FFC60B' },
       { name: 'MrBeast Gaming', color: '#D8690E' },
     ] },
   { id: 'pretend', eyebrow: 'ages 5-7, 8-11+', name: 'Pretend Play, Toys & Family Adventure', sample: 'Toy-Unboxing, Kids Pranks, Family creators content',
     accent: '#1A7E22', tiles: [
-      { name: 'Kids Diana Show', color: '#1A7E22' },
-      { name: 'Vlad and Niki', color: '#D8690E' },
-      { name: 'Toy-Unboxing', color: '#423FE1' },
+      { name: 'Kids Diana Show', color: '#1A7E22', img: '/cat-pretend-0.webp' },
+      { name: 'Vlad and Niki', color: '#D8690E', img: '/cat-pretend-1.webp' },
+      { name: 'Toy-Unboxing', color: '#423FE1', img: '/cat-pretend-2.webp' },
       { name: "Ryan's World", color: '#FFC60B' },
       { name: 'Blippi', color: '#E8843A' },
       { name: 'Toys and Colors', color: '#8848C1' },
     ] },
   { id: 'beauty', eyebrow: 'ages 5-7, 8-11+', name: 'Beauty / Makeup / ASMR', sample: 'Makeup tutorials, GRWM, Shopping Hauls, ASMR, Beauty Vloggers content',
     accent: '#E41177', tiles: [
-      { name: 'Bailey Sarian', color: '#E41177' },
-      { name: 'Erika Diane', color: '#D8690E' },
-      { name: 'Gibi ASMR', color: '#8848C1' },
+      { name: 'Bailey Sarian', color: '#E41177', img: '/cat-beauty-0.webp' },
+      { name: 'Bretman Rock', color: '#D8690E', img: '/cat-beauty-1.webp' },
+      { name: 'Gibi ASMR', color: '#8848C1', img: '/cat-beauty-2.webp' },
       { name: 'Tati Westbrook', color: '#423FE1' },
       { name: 'Carli Bybel', color: '#FFC60B' },
       { name: 'GentleWhispering', color: '#1A7E22' },
@@ -774,14 +774,18 @@ export default function Dashboard() {
             <div>
               {/* VARIANT A: FOCUS */}
               <section style={{ background: '#F2FEEE', padding: '44px 40px 40px', borderBottom: '1px solid #EFEFEF', position: 'relative', overflow: 'hidden' }}>
+                <div style={{ position: 'absolute', inset: 0 }}>
+                  <img src="/hero-banner.webp" alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                </div>
+                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(rgba(255,255,255,0.78), rgba(255,255,255,0.62))', pointerEvents: 'none' }}></div>
                 <div style={{ maxWidth: '820px', margin: '0 auto', textAlign: 'center', display: 'flex', flexDirection: 'column', gap: '14px', alignItems: 'center', position: 'relative', zIndex: 2 }}>
                   <h1 style={{ fontFamily: "var(--font-source-serif),'Source Serif Pro',Georgia,serif", fontWeight: 400, fontSize: '42px', lineHeight: 1.15, letterSpacing: '-0.5px', color: '#33A544', margin: 0 }}>Know what&apos;s in it before they press play.</h1>
                   <p style={{ fontSize: '16px', lineHeight: '24px', color: '#3B3B3C', maxWidth: '560px', margin: 0 }}>Paste any YouTube link. We&apos;ll flag every scene worth knowing about &mdash; violence, language, ads, overstimulation &mdash; with exact timestamps.</p>
                   <div style={{ display: 'flex', gap: '10px', width: '100%', maxWidth: '640px', marginTop: '8px' }}>
-                    <input value={url} onChange={e => setUrl(e.target.value)} placeholder="Paste a YouTube link \u2014 e.g. youtube.com/watch?v=\u2026" style={{ flex: 1, height: '50px', borderRadius: '12px', background: '#fff', border: '1px solid #CCCCCC', padding: '0 16px', fontFamily: "'Lato',sans-serif", fontSize: '14px', color: '#222', outline: 'none' }} />
+                    <input value={url} onChange={e => setUrl(e.target.value)} placeholder="Paste a YouTube link — e.g. youtube.com/watch?v=…" style={{ flex: 1, height: '50px', borderRadius: '12px', background: '#fff', border: '1px solid #CCCCCC', padding: '0 16px', fontFamily: "'Lato',sans-serif", fontSize: '14px', color: '#222', outline: 'none' }} />
                     <button onClick={analyze} style={{ height: '50px', padding: '0 28px', borderRadius: '12px', background: '#1A7E22', color: '#fff', fontFamily: "'Lato',sans-serif", fontWeight: 700, fontSize: '15px', border: 'none', cursor: 'pointer', transition: 'background 120ms' }}>Analyze Video</button>
                   </div>
-                  <div style={{ fontSize: '12px', color: '#757575' }}>Free for families \u00b7 Results shared with the parent community</div>
+                  <div style={{ fontSize: '12px', color: '#757575' }}>Free for families · Results shared with the parent community</div>
                 </div>
               </section>
 
@@ -798,6 +802,7 @@ export default function Dashboard() {
                         <div style={{ position: 'relative', flex: '1 1 260px', minWidth: '200px', display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 0, padding: 0, borderRadius: '4px', overflow: 'hidden' }}>
                           {cat.tiles.slice(0, 3).map((tile, ti) => (
                             <div key={ti} style={{ position: 'relative', height: '140px', display: 'flex', alignItems: 'flex-end', padding: '6px 7px', overflow: 'hidden', background: tile.color }}>
+                              {(tile as {img?: string}).img && <img src={(tile as {img?: string}).img} alt={tile.name} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />}
                               <span style={{ position: 'absolute', inset: 0, pointerEvents: 'none', background: 'linear-gradient(to top, rgba(0,0,0,0.62) 0%, rgba(0,0,0,0.05) 55%, rgba(0,0,0,0) 75%)' }}></span>
                               <span style={{ position: 'relative', zIndex: 2, pointerEvents: 'none', color: '#fff', fontFamily: "'Lato',sans-serif", fontWeight: 700, fontSize: '10px', lineHeight: 1.15, textShadow: '0 1px 2px rgba(0,0,0,.5)' }}>{tile.name}</span>
                             </div>
