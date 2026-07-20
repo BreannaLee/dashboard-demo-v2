@@ -1166,7 +1166,7 @@ export default function Dashboard() {
                 {allVids
                   .filter(v => wlGenres[0] === 'All genres' || CATEGORY_DATA.some(c => c.name === wlGenres[0] && v.genre === c.id))
                   .map(v => {
-                    const lev = LEVELS[v.level] || LEVELS.moderate;
+                    const lev = LEVELS[v.overall] || LEVELS.moderate;
                     return (
                       <button key={v.id} onClick={() => { setCurrentId(v.id); setScreen('analysis'); }} style={{ textAlign: 'left', background: '#fff', border: '1px solid #EFEFEF', borderRadius: '12px', padding: '10px 10px 14px', fontFamily: "'Lato',sans-serif", cursor: 'pointer', display: 'flex', flexDirection: 'column', gap: '9px', boxShadow: '0 1px 3px rgba(0,0,0,0.06)' }}>
                         <div style={{ position: 'relative', aspectRatio: '16/9', borderRadius: '8px', overflow: 'hidden', background: v.thumb ? 'transparent' : '#ddd' }}>
@@ -1178,7 +1178,7 @@ export default function Dashboard() {
                           <span style={{ fontSize: '12px', color: '#757575' }}>Ages {v.age}</span>
                         </div>
                         <div style={{ fontSize: '14px', fontWeight: 700, color: '#222', lineHeight: 1.35 }}>{v.title}</div>
-                        <div style={{ fontSize: '13px', color: '#757575' }}>{v.channel} &middot; {v.flags.length} flagged moments</div>
+                        <div style={{ fontSize: '13px', color: '#757575' }}>{v.channel} &middot; {v.moments.length} flagged moments</div>
                       </button>
                     );
                   })}
