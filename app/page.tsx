@@ -373,7 +373,7 @@ const CATEGORY_DATA = [
       { name: 'ChuChu TV', color: '#D8690E', img: '/chan-music-0.webp' },
       { name: 'Little Baby Bum', color: '#FFC60B', img: '/chan-music-1.webp' },
     ] },
-  { id: 'challenge', eyebrow: 'ages 9-14', name: 'Challenge, Stunt & Comedy Entertainment', sample: 'Challenge videos, Stunts, Pranks & Comedy content popular among tweens',
+  { id: 'challenge', eyebrow: 'ages 9+', name: 'Challenge, Stunt & Comedy Entertainment', sample: 'Challenge videos, Stunts, Pranks & Comedy content popular among tweens',
     accent: '#D8690E', tiles: [
       { name: 'MrBeast', color: '#D8690E', img: '/cat-challenge-0.webp' },
       { name: 'Chris and Jack', color: '#423FE1', img: '/cat-challenge-chrisandjack.webp' },
