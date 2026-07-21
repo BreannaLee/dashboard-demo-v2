@@ -20,9 +20,9 @@ a:hover { color: #1A7E22; }
   .csm-main { width: 100% !important; }
   .csm-hero-title { font-size: 26px !important; }
   .csm-hero-desc { font-size: 14px !important; }
-  .csm-hero-input-row { flex-direction: column !important; }
-  .csm-hero-input-row input { width: 100% !important; }
-  .csm-hero-input-row button { width: 100% !important; }
+  .csm-hero-input-row { flex-direction: column !important; max-width: 100% !important; }
+  .csm-hero-input-row input { width: 100% !important; box-sizing: border-box !important; border-radius: 10px !important; height: 46px !important; }
+  .csm-hero-input-row button { width: 100% !important; box-sizing: border-box !important; border-radius: 10px !important; height: 46px !important; }
   .csm-home-grid { grid-template-columns: 1fr !important; }
   .csm-wl-page { padding: 20px 16px 56px !important; }
   .csm-wl-title { font-size: 28px !important; }
