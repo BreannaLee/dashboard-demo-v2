@@ -193,40 +193,41 @@ interface Creator {
   name: string; age: string; views: string; level: string;
   avatarBg: string; avatarTint: string; avatarFg: string; avatarImg?: string;
   genres: string[]; seen: boolean; blurb: string; tags: string[];
+  subs: string; subsNum: number;
 }
 
 const CREATORS: Creator[] = [
-  { name: 'James Charles', age: '16+', views: '754K views', level: 'veryhigh', avatarBg: '#8848C1', avatarTint: '#F3EAFB', avatarFg: '#8848C1', avatarImg: '/creator-james-charles.webp', genres: ['Beauty / Makeup / ASMR'], seen: false,
+  { name: 'James Charles', age: '16+', views: '754K views', level: 'veryhigh', avatarBg: '#8848C1', avatarTint: '#F3EAFB', avatarFg: '#8848C1', avatarImg: '/creator-james-charles.webp', genres: ['Beauty / Makeup / ASMR'], seen: false, subs: '23.6M', subsNum: 23600000,
     blurb: 'Constant strong profanity, repeated sexual innuendo, alcohol references, and heavy advertising with direct buy/subscribe prompts.',
     tags: ['Language', 'Sex & romance', 'Drinking & drugs', 'Product & purchases'] },
-  { name: 'MrBeast', age: '9+', avatarImg: '/creator-mrbeast.webp', views: '143.8M views \u00b7 2 videos analyzed', level: 'veryhigh', avatarBg: '#2E6FB0', avatarTint: '#FBE9EC', avatarFg: '#BD081C', genres: ['Challenge, Stunt & Comedy Entertainment'], seen: true,
+  { name: 'MrBeast', age: '9+', avatarImg: '/creator-mrbeast.webp', views: '143.8M views \u00b7 2 videos analyzed', level: 'veryhigh', avatarBg: '#2E6FB0', avatarTint: '#FBE9EC', avatarFg: '#BD081C', genres: ['Challenge, Stunt & Comedy Entertainment'], seen: true, subs: '345M', subsNum: 345000000,
     blurb: 'Very fast pacing throughout, frequent profanity, and heavy brand promotion \u2014 from shop-and-click prompts to constant prize/product placement.',
     tags: ['Attention capture', 'Language', 'Product & purchases'] },
-  { name: 'Kane Pixels', age: '13+', avatarImg: '/creator-kane-pixels.webp', views: '~50M views', level: 'high', avatarBg: '#B8A94A', avatarTint: '#F5F0DC', avatarFg: '#8A7A2E', genres: ['Gaming'], seen: false,
+  { name: 'Kane Pixels', age: '13+', avatarImg: '/creator-kane-pixels.webp', views: '~50M views', level: 'high', avatarBg: '#B8A94A', avatarTint: '#F5F0DC', avatarFg: '#8A7A2E', genres: ['Gaming'], seen: false, subs: '4.8M', subsNum: 4800000,
     blurb: 'A horror short built on intense, sustained scares and unsettling imagery, with repeated strong profanity.',
     tags: ['Violence & scariness', 'Language'] },
-  { name: 'Gibi ASMR', age: '13+', avatarImg: '/creator-gibi-asmr.webp', views: '438K views', level: 'high', avatarBg: '#E41177', avatarTint: '#FDE7F1', avatarFg: '#E41177', genres: ['Beauty / Makeup / ASMR'], seen: false,
+  { name: 'Gibi ASMR', age: '13+', avatarImg: '/creator-gibi-asmr.webp', views: '438K views', level: 'high', avatarBg: '#E41177', avatarTint: '#FDE7F1', avatarFg: '#E41177', genres: ['Beauty / Makeup / ASMR'], seen: false, subs: '4.4M', subsNum: 4400000,
     blurb: 'A flirtatious, intimate roleplay with suggestive undertones, plus frequent luxury-brand placement and some alcohol and medication.',
     tags: ['Sex & romance', 'Product & purchases', 'Drinking & drugs'] },
-  { name: 'Sony Pictures (Resident Evil)', age: '17+', avatarImg: '/creator-sony-pictures-resident-evil-.webp', views: '4M views', level: 'moderate', avatarBg: '#6B2B2B', avatarTint: '#F2E4E4', avatarFg: '#6B2B2B', genres: ['Challenge, Stunt & Comedy Entertainment'], seen: false,
+  { name: 'Sony Pictures (Resident Evil)', age: '17+', avatarImg: '/creator-sony-pictures-resident-evil-.webp', views: '4M views', level: 'moderate', avatarBg: '#6B2B2B', avatarTint: '#F2E4E4', avatarFg: '#6B2B2B', genres: ['Challenge, Stunt & Comedy Entertainment'], seen: false, subs: '12.1M', subsNum: 12100000,
     blurb: 'An intense, scary movie trailer rated for ages 17+, with brief mild profanity and on-screen text pushing the paid release.',
     tags: ['Violence & scariness', 'Language', 'Product & purchases'] },
-  { name: 'Blippi', age: '4+', avatarImg: '/creator-blippi.webp', views: '254K views', level: 'moderate', avatarBg: '#E88A2E', avatarTint: '#FDF0E2', avatarFg: '#D8690E', genres: ['Pretend Play, Toys & Family Adventure'], seen: false,
+  { name: 'Blippi', age: '4+', avatarImg: '/creator-blippi.webp', views: '254K views', level: 'moderate', avatarBg: '#E88A2E', avatarTint: '#FDF0E2', avatarFg: '#D8690E', genres: ['Pretend Play, Toys & Family Adventure'], seen: false, subs: '20.2M', subsNum: 20200000,
     blurb: 'Very fast visual pacing that may overstimulate young kids, plus the Blippi logo on screen throughout and prompts to search for more.',
     tags: ['Attention capture', 'Product & purchases'] },
-  { name: 'Ms Rachel', age: '2+', avatarImg: '/creator-ms-rachel.webp', views: '372M views', level: 'lower', avatarBg: '#4AAE7C', avatarTint: '#E9F7EF', avatarFg: '#1A7E22', genres: ['Music & Nursery Rhymes'], seen: true,
+  { name: 'Ms Rachel', age: '2+', avatarImg: '/creator-ms-rachel.webp', views: '372M views', level: 'lower', avatarBg: '#4AAE7C', avatarTint: '#E9F7EF', avatarFg: '#1A7E22', genres: ['Music & Nursery Rhymes'], seen: true, subs: '42.3M', subsNum: 42300000,
     blurb: 'Gentle, age-appropriate learning content. The only concern is that several of her own branded toys are featured throughout.',
     tags: ['Product & purchases'] },
-  { name: 'KreekCraft', age: '10+', avatarImg: '/creator-kreekcraft.webp', views: '4.2M views', level: 'high', avatarBg: '#E8843A', avatarTint: '#FDF0E2', avatarFg: '#D8690E', genres: ['Gaming'], seen: false,
+  { name: 'KreekCraft', age: '10+', avatarImg: '/creator-kreekcraft.webp', views: '4.2M views', level: 'high', avatarBg: '#E8843A', avatarTint: '#FDF0E2', avatarFg: '#D8690E', genres: ['Gaming'], seen: false, subs: '8.1M', subsNum: 8100000,
     blurb: 'Strong language throughout plus intense Roblox gameplay with jump scares and rapid pacing.',
     tags: ['Language', 'Attention capture', 'Violence & scariness'] },
-  { name: 'Chris and Jack', age: '8+', avatarImg: '/creator-chris-and-jack.webp', views: '2.1M views', level: 'moderate', avatarBg: '#423FE1', avatarTint: '#EEF0FE', avatarFg: '#423FE1', genres: ['Challenge, Stunt & Comedy Entertainment'], seen: false,
+  { name: 'Chris and Jack', age: '8+', avatarImg: '/creator-chris-and-jack.webp', views: '2.1M views', level: 'moderate', avatarBg: '#423FE1', avatarTint: '#EEF0FE', avatarFg: '#423FE1', genres: ['Challenge, Stunt & Comedy Entertainment'], seen: false, subs: '1.2M', subsNum: 1200000,
     blurb: 'Upbeat comedy with mostly clean content. Some fast pacing and attention-grabbing editing but low on other concerns.',
     tags: ['Attention capture'] },
-  { name: "Grace's Room", age: '13+', avatarImg: '/creator-graces-room.webp', views: '1.6M views', level: 'high', avatarBg: '#D8690E', avatarTint: '#FDF0E2', avatarFg: '#D8690E', genres: ['Beauty / Makeup / ASMR'], seen: false,
+  { name: "Grace's Room", age: '13+', avatarImg: '/creator-graces-room.webp', views: '1.6M views', level: 'high', avatarBg: '#D8690E', avatarTint: '#FDF0E2', avatarFg: '#D8690E', genres: ['Beauty / Makeup / ASMR'], seen: false, subs: '890K', subsNum: 890000,
     blurb: 'A lifestyle vlog with frequent product placement, brand deals, and casual language throughout.',
     tags: ['Product & purchases', 'Language'] },
-  { name: 'Fairy Tales and Stories for Kids', age: '4+', avatarImg: '/creator-fairy-tales.webp', views: '8.2M views', level: 'moderate', avatarBg: '#D8690E', avatarTint: '#FDF0E2', avatarFg: '#D8690E', genres: ['Music & Nursery Rhymes'], seen: false,
+  { name: 'Fairy Tales and Stories for Kids', age: '4+', avatarImg: '/creator-fairy-tales.webp', views: '8.2M views', level: 'moderate', avatarBg: '#D8690E', avatarTint: '#FDF0E2', avatarFg: '#D8690E', genres: ['Music & Nursery Rhymes'], seen: false, subs: '5.7M', subsNum: 5700000,
     blurb: 'Animated fairy tales with some mildly scary moments and fast-paced visuals that may startle younger viewers.',
     tags: ['Attention capture', 'Violence & scariness'] },
 ];
@@ -362,7 +363,7 @@ const ANALYZED_CHANNELS = new Set([
 function isAnalyzed(name: string) { return ANALYZED_CHANNELS.has(name.toLowerCase()); }
 
 const CATEGORY_DATA = [
-  { id: 'music', eyebrow: 'ages 2-4', name: 'Music & Nursery Rhymes', sample: 'Use these analyses to create Whitelist for YouTube Kids',
+  { id: 'music', eyebrow: 'ages 0-5', name: 'Music & Nursery Rhymes', sample: 'Use these analyses to create Whitelist for YouTube Kids',
     accent: '#423FE1', tiles: [
       { name: 'Ms. Rachel', color: '#33A544', img: '/chan-music-2.webp' },
       { name: 'Fairy Tales and Stories for Kids', color: '#D8690E', img: '/cat-music-fairytales.webp' },
@@ -372,7 +373,7 @@ const CATEGORY_DATA = [
       { name: 'ChuChu TV', color: '#D8690E', img: '/chan-music-0.webp' },
       { name: 'Little Baby Bum', color: '#FFC60B', img: '/chan-music-1.webp' },
     ] },
-  { id: 'challenge', eyebrow: 'ages 8-11+', name: 'Challenge, Stunt & Comedy Entertainment', sample: 'Challenge videos, Stunts, Pranks & Comedy content popular among tweens',
+  { id: 'challenge', eyebrow: 'ages 9-14', name: 'Challenge, Stunt & Comedy Entertainment', sample: 'Challenge videos, Stunts, Pranks & Comedy content popular among tweens',
     accent: '#D8690E', tiles: [
       { name: 'MrBeast', color: '#D8690E', img: '/cat-challenge-0.webp' },
       { name: 'Chris and Jack', color: '#423FE1', img: '/cat-challenge-chrisandjack.webp' },
@@ -382,7 +383,7 @@ const CATEGORY_DATA = [
       { name: '5-Minute Crafts', color: '#1A7E22', img: '/chan-challenge-1.webp' },
       { name: 'Zach King', color: '#E8843A', img: '/chan-challenge-2.webp' },
     ] },
-  { id: 'gaming', eyebrow: 'ages 8-11+', name: 'Gaming', sample: 'Roblox, Minecraft, Gaming Streaming content popular among teens & pre-teens',
+  { id: 'gaming', eyebrow: 'ages 6-12', name: 'Gaming', sample: 'Roblox, Minecraft, Gaming Streaming content popular among teens & pre-teens',
     accent: '#8848C1', tiles: [
       { name: 'KreekCraft', color: '#E8843A', img: '/cat-gaming-kreekcraft.webp' },
       { name: 'DanTDM', color: '#8848C1', img: '/cat-gaming-0.webp' },
@@ -392,7 +393,7 @@ const CATEGORY_DATA = [
       { name: 'Grian', color: '#FFC60B', img: '/cat-gaming-grian.webp' },
       { name: 'MrBeast Gaming', color: '#D8690E', img: '/cat-gaming-mrbeastgaming.webp' },
     ] },
-  { id: 'pretend', eyebrow: 'ages 5-7, 8-11+', name: 'Pretend Play, Toys & Family Adventure', sample: 'Toy-Unboxing, Kids Pranks, Family creators content',
+  { id: 'pretend', eyebrow: 'ages 3-8', name: 'Pretend Play, Toys & Family Adventure', sample: 'Toy-Unboxing, Kids Pranks, Family creators content',
     accent: '#1A7E22', tiles: [
       { name: 'Blippi', color: '#E8843A', img: '/cat-pretend-blippi.webp' },
       { name: 'Kids Diana Show', color: '#1A7E22', img: '/cat-pretend-0.webp' },
@@ -401,7 +402,7 @@ const CATEGORY_DATA = [
       { name: "Ryan's World", color: '#FFC60B', img: '/cat-pretend-ryansworld.webp' },
       { name: 'Toys and Colors', color: '#8848C1', img: '/cat-pretend-toysandcolors.webp' },
     ] },
-  { id: 'beauty', eyebrow: 'ages 5-7, 8-11+', name: 'Beauty / Makeup / ASMR', sample: 'Makeup tutorials, GRWM, Shopping Hauls, ASMR, Beauty Vloggers content',
+  { id: 'beauty', eyebrow: 'ages 12+', name: 'Beauty / Makeup / ASMR', sample: 'Makeup tutorials, GRWM, Shopping Hauls, ASMR, Beauty Vloggers content',
     accent: '#E41177', tiles: [
       { name: 'Gibi ASMR', color: '#8848C1', img: '/cat-beauty-2.webp' },
       { name: 'James Charles', color: '#E41177', img: '/cat-beauty-jamescharies.webp' },
@@ -636,7 +637,14 @@ export default function Dashboard() {
   const trending = TRENDING.map(t => ({ ...decorate(ANALYSES.find(a => a.id === t.id)!), viewers: t.viewers }));
 
   const curGenreData = CATEGORY_DATA.find(c => c.id === currentGenre) || CATEGORY_DATA[0];
-  const curGenreVideos = (genreVideos[curGenreData.id] || []).map(decorate);
+  const parseViews = (v: string) => {
+    const m = v.match(/([\d.]+)\s*(B|M|K)?/i);
+    if (!m) return 0;
+    const n = parseFloat(m[1]);
+    const u = (m[2] || '').toUpperCase();
+    return u === 'B' ? n * 1e9 : u === 'M' ? n * 1e6 : u === 'K' ? n * 1e3 : n;
+  };
+  const curGenreVideos = (genreVideos[curGenreData.id] || []).map(decorate).sort((a, b) => parseViews(b.views) - parseViews(a.views));
 
   const legendLevels = (['veryhigh', 'high', 'moderate', 'lower'] as const).map(k => ({ name: LEVELS[k].label, color: LEVELS[k].bg }));
 
@@ -699,7 +707,7 @@ export default function Dashboard() {
   const creators = CREATORS
     .filter(c => wlGenres.includes('All genres') || c.genres.some(g => wlGenres.includes(g)))
     .slice()
-    .sort((a, b) => (wlEmph.length ? emphScore(b) - emphScore(a) : 0) || (wlOrder === 'concern' ? (rankVal[b.level] || 0) - (rankVal[a.level] || 0) : (rankVal[a.level] || 0) - (rankVal[b.level] || 0)))
+    .sort((a, b) => (wlEmph.length ? emphScore(b) - emphScore(a) : 0) || (wlOrder === 'popular' ? b.subsNum - a.subsNum : wlOrder === 'concern' ? (rankVal[b.level] || 0) - (rankVal[a.level] || 0) : (rankVal[a.level] || 0) - (rankVal[b.level] || 0)))
     .map((c, i) => {
       const l = LEVELS[c.level];
       const slug = c.name.toLowerCase().replace(/[^a-z0-9]+/g, '-');
@@ -1150,7 +1158,7 @@ export default function Dashboard() {
               <p style={{ fontSize: '14px', color: '#757575', margin: '0 0 32px', maxWidth: '640px' }}>{curGenreData.sample}</p>
 
               <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', marginBottom: '16px' }}>
-                <h5 style={{ fontFamily: "'Lato',sans-serif", fontWeight: 700, fontSize: '13px', letterSpacing: '0.08em', textTransform: 'uppercase', color: '#222', margin: 0 }}>Popular video analyses</h5>
+                <h5 style={{ fontFamily: "'Lato',sans-serif", fontWeight: 700, fontSize: '13px', letterSpacing: '0.08em', textTransform: 'uppercase', color: '#222', margin: 0 }}>Videos by popularity</h5>
                 <span style={{ fontSize: '13px', color: '#757575' }}>{curGenreVideos.length} analyzed</span>
               </div>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '22px', marginBottom: '44px' }}>
@@ -1171,7 +1179,10 @@ export default function Dashboard() {
                         <span style={{ position: 'absolute', top: '8px', left: '8px', zIndex: 3, display: 'inline-flex', alignItems: 'center', padding: '3px 8px', borderRadius: '6px', background: 'rgba(0,0,0,0.55)', color: '#ccc', fontSize: '10px', fontWeight: 700, letterSpacing: '0.04em', textTransform: 'uppercase', fontFamily: "'Lato',sans-serif" }}>Example</span>
                       )}
                     </div>
-                    <div style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', color: '#757575' }}>YouTube Video</div>
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                      <span style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', color: '#757575' }}>YouTube Video</span>
+                      <span style={{ fontSize: '12px', color: '#757575' }}>{v.views}</span>
+                    </div>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '7px' }}>
                       <span style={{ width: '22px', height: '22px', flex: '0 0 22px', borderRadius: '999px', background: v.thumbBg, display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontWeight: 700, fontSize: '11px', overflow: 'hidden' }}>{v.channel.charAt(0)}</span>
                       <span style={{ fontSize: '14px', fontWeight: 700, color: '#423FE1' }}>{v.channel}</span>
@@ -1442,7 +1453,7 @@ export default function Dashboard() {
                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '15px 20px' }}>
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#222222" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg>
                   <span style={{ fontSize: '13px', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#222' }}>Tune for your family</span>
-                  <span style={{ fontSize: '14px', color: '#757575' }}>{(wlOrder === 'concern' ? 'Most concerning first' : 'Safest first') + ' \u00b7 Age ' + wlAge}</span>
+                  <span style={{ fontSize: '14px', color: '#757575' }}>{(wlOrder === 'concern' ? 'Most concerning first' : wlOrder === 'popular' ? 'Most popular first' : 'Safest first') + ' \u00b7 Age ' + wlAge}</span>
                   <button onClick={() => setWlOpen(p => !p)} style={{ marginLeft: 'auto', padding: '8px 20px', borderRadius: '999px', background: '#222222', color: '#fff', border: 'none', fontFamily: "'Lato',sans-serif", fontWeight: 700, fontSize: '13px', cursor: 'pointer' }}>{wlOpen ? 'Hide' : 'Show filters'}</button>
                 </div>
                 {wlOpen && (
@@ -1459,11 +1470,11 @@ export default function Dashboard() {
                       <div style={{ fontSize: '14px', fontWeight: 700, color: '#222' }}>Order</div>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '14px', flexWrap: 'wrap' }}>
                         <div style={{ display: 'inline-flex', background: '#EFEFEF', borderRadius: '10px', padding: '3px' }}>
-                          {[{ key: 'concern', label: 'Most concerning first' }, { key: 'safest', label: 'Safest first' }].map(o => (
+                          {[{ key: 'concern', label: 'Most concerning' }, { key: 'popular', label: 'Most popular' }, { key: 'safest', label: 'Safest first' }].map(o => (
                             <button key={o.key} onClick={() => setWlOrder(o.key)} style={segStyle(wlOrder === o.key)}>{o.label}</button>
                           ))}
                         </div>
-                        <span style={{ fontSize: '13px', color: '#757575' }}>See which channels to watch out for.</span>
+                        <span style={{ fontSize: '13px', color: '#757575' }}>{wlOrder === 'popular' ? 'Ranked by subscriber count.' : 'See which channels to watch out for.'}</span>
                       </div>
                     </div>
                     <div className="csm-filter-grid" style={{ display: 'grid', gridTemplateColumns: mob ? '1fr' : '120px 1fr', gap: mob ? '8px' : '16px', alignItems: 'start' }}>
@@ -1514,7 +1525,7 @@ export default function Dashboard() {
                         {c.age && <span style={{ background: '#FDECEC', color: '#BD081C', fontSize: '10px', fontWeight: 800, letterSpacing: '0.04em', padding: '3px 7px', borderRadius: '5px', textTransform: 'uppercase' }}>Rated for ages {c.age}</span>}
                         {c.seen && <span style={{ background: '#FFF3E0', color: '#D8690E', fontSize: '10px', fontWeight: 800, letterSpacing: '0.04em', padding: '3px 7px', borderRadius: '5px', textTransform: 'uppercase' }}>Seen by millions</span>}
                       </div>
-                      <span style={{ fontSize: '13px', color: '#757575' }}>{c.views}</span>
+                      <span style={{ fontSize: '13px', color: '#757575' }}>{c.subs} subscribers · {c.views}</span>
                       <p style={{ fontSize: '13px', lineHeight: 1.5, color: '#222', margin: 0 }}>{c.blurb}</p>
                       <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap', alignItems: 'center' }}>
                         {mob && <><span style={c.pillSt}>{c.levelLabel}</span><span style={{ fontSize: '12px', color: '#999999' }}>concern</span></>}
