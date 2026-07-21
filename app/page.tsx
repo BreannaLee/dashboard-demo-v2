@@ -32,18 +32,18 @@ interface Analysis {
 // Map creator/video names to real analysis URLs
 const REAL_ANALYSIS_URLS: Record<string, string> = {
   // Only creators with THEIR OWN real analysis — no cross-mapping
-  'blippi': 'https://video-analyzer-dev.commonsense.org/video/analysis/694f3995-c81e-4281-b576-84230a49e964',
-  'ms rachel': 'https://video-analyzer-dev.commonsense.org/video/analysis/23515007-12b7-4d39-97ba-75c2e45f9bf8',
-  'ms. rachel': 'https://video-analyzer-dev.commonsense.org/video/analysis/23515007-12b7-4d39-97ba-75c2e45f9bf8',
-  'fairy tales and stories for kids': 'https://video-analyzer-dev.commonsense.org/video/analysis/0ca8d77f-8117-4de4-b5bc-e9b3390ecb8a',
-  'gibi asmr': 'https://video-analyzer-dev.commonsense.org/video/analysis/d6f8bd9a-0aca-45d5-8e98-01ec021ff804',
-  'james charles': 'https://video-analyzer-dev.commonsense.org/video/analysis/5a271fce-fe1d-45b0-becb-8d64eaa3ce48',
-  "grace's room": 'https://video-analyzer-dev.commonsense.org/video/analysis/e8212b04-49fb-49d9-807f-2e26f106b4bd',
-  'mrbeast': 'https://video-analyzer-dev.commonsense.org/video/analysis/a254d0b9-aa4c-42f8-abe3-97b1db37b25f',
-  'chris and jack': 'https://video-analyzer-dev.commonsense.org/video/analysis/6467b933-cbef-4997-a6ed-c3791774e8fa',
-  'kreekcraft': 'https://video-analyzer-dev.commonsense.org/video/analysis/b2fc81d2-10eb-4fd8-8341-fb7fc3a0d065',
-  'backrooms': 'https://video-analyzer-dev.commonsense.org/video/analysis/69c8286e-25c1-4df2-82ff-7fc6ea226897',
-  'kane pixels': 'https://video-analyzer-dev.commonsense.org/video/analysis/69c8286e-25c1-4df2-82ff-7fc6ea226897',
+  'blippi': 'https://video-analyzer-dev.commonsense.org/video/analysis-plain/694f3995-c81e-4281-b576-84230a49e964',
+  'ms rachel': 'https://video-analyzer-dev.commonsense.org/video/analysis-plain/23515007-12b7-4d39-97ba-75c2e45f9bf8',
+  'ms. rachel': 'https://video-analyzer-dev.commonsense.org/video/analysis-plain/23515007-12b7-4d39-97ba-75c2e45f9bf8',
+  'fairy tales and stories for kids': 'https://video-analyzer-dev.commonsense.org/video/analysis-plain/0ca8d77f-8117-4de4-b5bc-e9b3390ecb8a',
+  'gibi asmr': 'https://video-analyzer-dev.commonsense.org/video/analysis-plain/d6f8bd9a-0aca-45d5-8e98-01ec021ff804',
+  'james charles': 'https://video-analyzer-dev.commonsense.org/video/analysis-plain/5a271fce-fe1d-45b0-becb-8d64eaa3ce48',
+  "grace's room": 'https://video-analyzer-dev.commonsense.org/video/analysis-plain/e8212b04-49fb-49d9-807f-2e26f106b4bd',
+  'mrbeast': 'https://video-analyzer-dev.commonsense.org/video/analysis-plain/a254d0b9-aa4c-42f8-abe3-97b1db37b25f',
+  'chris and jack': 'https://video-analyzer-dev.commonsense.org/video/analysis-plain/6467b933-cbef-4997-a6ed-c3791774e8fa',
+  'kreekcraft': 'https://video-analyzer-dev.commonsense.org/video/analysis-plain/b2fc81d2-10eb-4fd8-8341-fb7fc3a0d065',
+  'backrooms': 'https://video-analyzer-dev.commonsense.org/video/analysis-plain/69c8286e-25c1-4df2-82ff-7fc6ea226897',
+  'kane pixels': 'https://video-analyzer-dev.commonsense.org/video/analysis-plain/69c8286e-25c1-4df2-82ff-7fc6ea226897',
 };
 
 function getRealAnalysisUrl(channelOrId: string): string | null {
