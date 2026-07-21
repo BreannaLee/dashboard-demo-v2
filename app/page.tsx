@@ -31,13 +31,18 @@ interface Analysis {
 
 // Map creator/video names to real analysis URLs
 const REAL_ANALYSIS_URLS: Record<string, string> = {
-  'backrooms': 'https://video-analyzer-dev.commonsense.org/video/analysis/69c8286e-25c1-4df2-82ff-7fc6ea226897',
-  'mrbeast': 'https://video-analyzer-dev.commonsense.org/video/analysis/694f3995-c81e-4281-b576-84230a49e964',
-  'james charles': 'https://video-analyzer-dev.commonsense.org/video/analysis/23515007-12b7-4d39-97ba-75c2e45f9bf8',
+  // Only creators with THEIR OWN real analysis — no cross-mapping
+  'blippi': 'https://video-analyzer-dev.commonsense.org/video/analysis/694f3995-c81e-4281-b576-84230a49e964',
+  'ms rachel': 'https://video-analyzer-dev.commonsense.org/video/analysis/23515007-12b7-4d39-97ba-75c2e45f9bf8',
+  'ms. rachel': 'https://video-analyzer-dev.commonsense.org/video/analysis/23515007-12b7-4d39-97ba-75c2e45f9bf8',
+  'fairy tales and stories for kids': 'https://video-analyzer-dev.commonsense.org/video/analysis/0ca8d77f-8117-4de4-b5bc-e9b3390ecb8a',
   'gibi asmr': 'https://video-analyzer-dev.commonsense.org/video/analysis/d6f8bd9a-0aca-45d5-8e98-01ec021ff804',
-  'blippi': 'https://video-analyzer-dev.commonsense.org/video/analysis/a254d0b9-aa4c-42f8-abe3-97b1db37b25f',
-  'cocomelon': 'https://video-analyzer-dev.commonsense.org/video/analysis/5a271fce-fe1d-45b0-becb-8d64eaa3ce48',
-  'ms rachel': 'https://video-analyzer-dev.commonsense.org/video/analysis/3d850b6d-d2d8-4c71-9981-bbedd81481db',
+  'james charles': 'https://video-analyzer-dev.commonsense.org/video/analysis/5a271fce-fe1d-45b0-becb-8d64eaa3ce48',
+  "grace's room": 'https://video-analyzer-dev.commonsense.org/video/analysis/e8212b04-49fb-49d9-807f-2e26f106b4bd',
+  'mrbeast': 'https://video-analyzer-dev.commonsense.org/video/analysis/a254d0b9-aa4c-42f8-abe3-97b1db37b25f',
+  'chris and jack': 'https://video-analyzer-dev.commonsense.org/video/analysis/6467b933-cbef-4997-a6ed-c3791774e8fa',
+  'kreekcraft': 'https://video-analyzer-dev.commonsense.org/video/analysis/b2fc81d2-10eb-4fd8-8341-fb7fc3a0d065',
+  'backrooms': 'https://video-analyzer-dev.commonsense.org/video/analysis/69c8286e-25c1-4df2-82ff-7fc6ea226897',
   'kane pixels': 'https://video-analyzer-dev.commonsense.org/video/analysis/69c8286e-25c1-4df2-82ff-7fc6ea226897',
 };
 
@@ -83,9 +88,9 @@ const ANALYSES: Analysis[] = [
     ],
   },
   {
-    id: 'mrbeast', title: 'Last To Leave $800,000 Island Keeps It', channel: 'MrBeast',
+    id: 'mrbeast', title: 'Last To Leave Grocery Store, Wins $250,000', channel: 'MrBeast',
     duration: '16:24', durS: 984, views: '143M views', age: '9+', overall: 'veryhigh',
-    thumbBg: '#2E6FB0', when: 'Yesterday', commentCount: 31,
+    thumbBg: '#2E6FB0', thumb: '/thumb-mrbeast.webp', when: 'Yesterday', commentCount: 31,
     blurb: 'Very fast pacing throughout, frequent mild profanity, and heavy brand and prize promotion.',
     summary: 'Very fast pacing throughout with constant cuts, sound effects, and on-screen counters designed to hold attention. Frequent brand promotion \u2014 from sponsor shout-outs to constant prize and product placement \u2014 plus occasional mild profanity. Competition framing is exciting but centers money as the reward for everything.',
     moments: [
@@ -110,9 +115,9 @@ const ANALYSES: Analysis[] = [
     ],
   },
   {
-    id: 'blippi', title: 'Blippi Visits the Fire Station', channel: 'Blippi',
+    id: 'blippi', title: "Blippi\u2019s Jurassic Puppy Show!", channel: 'Blippi',
     duration: '12:06', durS: 726, views: '38M views', age: '4+', overall: 'moderate',
-    thumbBg: '#E88A2E', when: '2 days ago', commentCount: 7,
+    thumbBg: '#E88A2E', thumb: '/thumb-blippi.webp', when: '2 days ago', commentCount: 7,
     blurb: 'Very fast visual pacing that may overstimulate young kids, plus constant brand presence.',
     summary: 'Content is friendly and educational, but the visual pacing is very fast for the preschool audience \u2014 quick cuts, zooms, and sound effects roughly every 3 seconds. The Blippi logo is on screen throughout, with end-of-video prompts to search for more Blippi content.',
     moments: [
@@ -131,9 +136,9 @@ const ANALYSES: Analysis[] = [
     ],
   },
   {
-    id: 'msrachel', title: 'Learn to Talk with Ms Rachel', channel: 'Ms Rachel',
+    id: 'msrachel', title: 'Toddler Learning with Ms Rachel', channel: 'Ms Rachel',
     duration: '28:14', durS: 1694, views: '372M views', age: '2+', overall: 'lower',
-    thumbBg: '#4AAE7C', when: '2 days ago', commentCount: 4,
+    thumbBg: '#4AAE7C', thumb: '/thumb-msrachel.webp', when: '2 days ago', commentCount: 4,
     blurb: 'Gentle, age-appropriate learning content. The only flag: her own branded toys appear.',
     summary: 'Gentle, age-appropriate learning content with slow pacing, repetition, and direct-to-camera speech that supports language development. The only concern is that several of her own branded toys are featured throughout.',
     moments: [
@@ -150,23 +155,27 @@ const ANALYSES: Analysis[] = [
     ],
   },
   {
-    id: 'residentevil', title: 'Resident Evil \u2014 Official Trailer', channel: 'Sony Pictures',
-    duration: '2:31', durS: 151, views: '4M views', age: '17+', overall: 'moderate',
-    thumbBg: '#6B2B2B', when: '3 days ago', commentCount: 9,
-    blurb: 'An intense, scary movie trailer rated 17+, with brief mild profanity and paid-release promotion.',
-    summary: 'An intense, scary movie trailer for a film rated for ages 17+. Contains sustained horror imagery, brief mild profanity, and on-screen text pushing the paid release.',
+    id: 'kreekcraft', title: 'So.. Roblox lied..', channel: 'KreekCraft',
+    duration: '16:07', durS: 967, views: '4.2M views', age: '10+', overall: 'high',
+    thumbBg: '#E8843A', thumb: '/thumb-kreekcraft.webp', when: '3 days ago', commentCount: 15,
+    blurb: 'Strong language throughout plus intense Roblox gameplay with jump scares and rapid pacing.',
+    summary: 'A Roblox gaming video that includes frequent strong language, rapid-fire editing, and intense gameplay moments including jump scares. The creator discusses controversial Roblox platform decisions with heated commentary.',
     moments: [
-      { t: 12, cat: 'violence', label: 'Zombie attack montage begins' },
-      { t: 48, cat: 'violence', label: 'Graphic creature reveal' },
-      { t: 77, cat: 'language', label: 'Brief mild profanity' },
-      { t: 102, cat: 'violence', label: 'Sustained jump-scare sequence' },
-      { t: 138, cat: 'products', label: 'On-screen text pushing ticket purchase' },
+      { t: 22, cat: 'language', label: 'Strong profanity in opening rant' },
+      { t: 95, cat: 'attention', label: 'Rapid cuts between gameplay clips' },
+      { t: 180, cat: 'language', label: 'Repeated mild profanity during gameplay' },
+      { t: 290, cat: 'violence', label: 'Jump scare moment in horror game' },
+      { t: 410, cat: 'language', label: 'Strong profanity reacting to game event' },
+      { t: 520, cat: 'attention', label: 'Fast-paced montage sequence' },
+      { t: 630, cat: 'violence', label: 'Intense chase sequence in-game' },
+      { t: 750, cat: 'language', label: 'Profanity during frustrated gameplay' },
+      { t: 860, cat: 'products', label: 'Roblox merch plug with link' },
     ],
     cats: [
-      { key: 'violence', count: 3, note: 'Intense horror imagery throughout; film is rated 17+.' },
-      { key: 'language', count: 1, note: 'Brief mild profanity.' },
-      { key: 'products', count: 1, note: 'Ticket purchase promotion.' },
-      { key: 'attention', count: 0, note: "We didn't find anything of concern for this topic." },
+      { key: 'language', count: 4, note: 'Frequent strong and mild profanity throughout.' },
+      { key: 'attention', count: 2, note: 'Fast editing and rapid gameplay transitions.' },
+      { key: 'violence', count: 2, note: 'Jump scares and intense chase moments in horror games.' },
+      { key: 'products', count: 1, note: 'Merch promotion with purchase link.' },
       { key: 'sex', count: 0, note: "We didn't find anything of concern for this topic." },
       { key: 'drugs', count: 0, note: "We didn't find anything of concern for this topic." },
     ],
@@ -176,7 +185,7 @@ const ANALYSES: Analysis[] = [
 const TRENDING = [
   { id: 'mrbeast', viewers: '4.2K' },
   { id: 'backrooms', viewers: '2.8K' },
-  { id: 'residentevil', viewers: '1.9K' },
+  { id: 'kreekcraft', viewers: '1.9K' },
   { id: 'msrachel', viewers: '1.1K' },
 ];
 
@@ -208,26 +217,38 @@ const CREATORS: Creator[] = [
   { name: 'Ms Rachel', age: '2+', avatarImg: '/creator-ms-rachel.webp', views: '372M views', level: 'lower', avatarBg: '#4AAE7C', avatarTint: '#E9F7EF', avatarFg: '#1A7E22', genres: ['Music & Nursery Rhymes'], seen: true,
     blurb: 'Gentle, age-appropriate learning content. The only concern is that several of her own branded toys are featured throughout.',
     tags: ['Product & purchases'] },
+  { name: 'KreekCraft', age: '10+', avatarImg: '/creator-kreekcraft.webp', views: '4.2M views', level: 'high', avatarBg: '#E8843A', avatarTint: '#FDF0E2', avatarFg: '#D8690E', genres: ['Gaming'], seen: false,
+    blurb: 'Strong language throughout plus intense Roblox gameplay with jump scares and rapid pacing.',
+    tags: ['Language', 'Attention capture', 'Violence & scariness'] },
+  { name: 'Chris and Jack', age: '8+', avatarImg: '/creator-chris-and-jack.webp', views: '2.1M views', level: 'moderate', avatarBg: '#423FE1', avatarTint: '#EEF0FE', avatarFg: '#423FE1', genres: ['Challenge, Stunt & Comedy Entertainment'], seen: false,
+    blurb: 'Upbeat comedy with mostly clean content. Some fast pacing and attention-grabbing editing but low on other concerns.',
+    tags: ['Attention capture'] },
+  { name: "Grace's Room", age: '13+', avatarImg: '/creator-graces-room.webp', views: '1.6M views', level: 'high', avatarBg: '#D8690E', avatarTint: '#FDF0E2', avatarFg: '#D8690E', genres: ['Beauty / Makeup / ASMR'], seen: false,
+    blurb: 'A lifestyle vlog with frequent product placement, brand deals, and casual language throughout.',
+    tags: ['Product & purchases', 'Language'] },
+  { name: 'Fairy Tales and Stories for Kids', age: '4+', avatarImg: '/creator-fairy-tales.webp', views: '8.2M views', level: 'moderate', avatarBg: '#D8690E', avatarTint: '#FDF0E2', avatarFg: '#D8690E', genres: ['Music & Nursery Rhymes'], seen: false,
+    blurb: 'Animated fairy tales with some mildly scary moments and fast-paced visuals that may startle younger viewers.',
+    tags: ['Attention capture', 'Violence & scariness'] },
 ];
 
 const COMMENTS = [
   { id: 'c1', name: 'Dana M.', initial: 'D', avatarBg: '#423FE1', meta: 'Parent of two \u00b7 3h ago', type: 'note', age: '5\u20138', video: 'The Backrooms (Found Footage)', videoId: 'backrooms', ts: '2:58', moment: 'jump scare', volume: 14, volumeLabel: 'parents flagged the pacing on this one', tags: ['Watched together', 'Skipped a part'], likes: 24,
     text: 'Thank you for the timestamp on the 2:58 jump scare \u2014 my 8-year-old had been asking about this one because friends at school were talking about it. We watched the first two minutes together and talked about why it felt creepy. Skipped the rest.' },
-  { id: 'c4', name: 'Jon K.', initial: 'J', avatarBg: '#8848C1', meta: 'Parent of three \u00b7 yesterday', type: 'headsup', age: '9\u201312', video: 'Resident Evil \u2014 Official Trailer', videoId: 'residentevil', ts: '', moment: '', volume: 6, volumeLabel: 'parents reported the autoplay', tags: ['Blocked the channel'], likes: 9,
-    text: 'Heads up: this trailer autoplays after some gaming videos my 11-year-old watches. Worth blocking the channel if your kid is sensitive to horror.' },
-  { id: 'c2', name: 'Marcus T.', initial: 'M', avatarBg: '#1A7E22', meta: 'Parent of a 10-year-old \u00b7 6h ago', type: 'note', age: '9\u201312', video: 'Last To Leave $800,000 Island Keeps It', videoId: 'mrbeast', ts: '14:10', moment: '"subscribe to win" prompt', volume: 9, volumeLabel: 'parents flagged the giveaway prompt', tags: ['Talked about it'], likes: 41,
+  { id: 'c4', name: 'Jon K.', initial: 'J', avatarBg: '#8848C1', meta: 'Parent of three \u00b7 yesterday', type: 'headsup', age: '9\u201312', video: 'So.. Roblox lied..', videoId: 'kreekcraft', ts: '', moment: '', volume: 6, volumeLabel: 'parents flagged the language', tags: ['Blocked the channel'], likes: 9,
+    text: 'Heads up: the language in this one is pretty strong for a Roblox video. My 11-year-old picked up some words I was not happy about. Worth previewing before letting younger kids watch.' },
+  { id: 'c2', name: 'Marcus T.', initial: 'M', avatarBg: '#1A7E22', meta: 'Parent of a 10-year-old \u00b7 6h ago', type: 'note', age: '9\u201312', video: 'Last To Leave Grocery Store, Wins $250,000', videoId: 'mrbeast', ts: '14:10', moment: '"subscribe to win" prompt', volume: 9, volumeLabel: 'parents flagged the giveaway prompt', tags: ['Talked about it'], likes: 41,
     text: 'The "subscribe to win" flag at 14:10 is the one to talk about. My son genuinely believed he might win money. Good conversation starter about how giveaways are designed to farm subscriptions.' },
-  { id: 'c3', name: 'Priya S.', initial: 'P', avatarBg: '#D8690E', meta: 'Parent of a 4-year-old \u00b7 yesterday', type: 'note', age: 'Under 5', video: 'Blippi Visits the Fire Station', videoId: 'blippi', ts: '', moment: '', volume: 22, volumeLabel: 'parents flagged fast pacing', tags: ['Wired after watching'], likes: 17,
+  { id: 'c3', name: 'Priya S.', initial: 'P', avatarBg: '#D8690E', meta: 'Parent of a 4-year-old \u00b7 yesterday', type: 'note', age: 'Under 5', video: 'Blippi\u2019s Jurassic Puppy Show!', videoId: 'blippi', ts: '', moment: '', volume: 22, volumeLabel: 'parents flagged fast pacing', tags: ['Wired after watching'], likes: 17,
     text: 'Did not expect Blippi to get flagged for pacing but honestly it tracks \u2014 my daughter is wired after every episode. We switched to slower shows before bedtime and it made a real difference.' },
-  { id: 'c5', name: 'Elena R.', initial: 'E', avatarBg: '#33A544', meta: 'Parent of a 2-year-old \u00b7 2 days ago', type: 'note', age: 'Under 5', video: 'Learn to Talk with Ms Rachel', videoId: 'msrachel', ts: '', moment: '', volume: 0, volumeLabel: '', tags: ['Watched together', 'Felt fine'], likes: 33,
+  { id: 'c5', name: 'Elena R.', initial: 'E', avatarBg: '#33A544', meta: 'Parent of a 2-year-old \u00b7 2 days ago', type: 'note', age: 'Under 5', video: 'Toddler Learning with Ms Rachel', videoId: 'msrachel', ts: '', moment: '', volume: 0, volumeLabel: '', tags: ['Watched together', 'Felt fine'], likes: 33,
     text: 'Reassuring analysis. The toy placement flag is fair \u2014 my toddler now points at the plush in stores. Otherwise this is the one channel I feel fully comfortable with.' },
 ];
 
 const QUESTIONS = [
-  { id: 'q2', title: 'Blippi flagged for very fast pacing \u2014 has anyone noticed it at home?', anchor: 'Blippi Visits the Fire Station', videoId: 'blippi', age: 'Under 5', seeded: true, replies: 12, topReply: { name: 'Priya S.', text: 'Yes \u2014 mine is wired after every episode. Slower shows before bed helped a lot.' }, expert: false },
+  { id: 'q2', title: 'Blippi flagged for very fast pacing \u2014 has anyone noticed it at home?', anchor: 'Blippi\u2019s Jurassic Puppy Show!', videoId: 'blippi', age: 'Under 5', seeded: true, replies: 12, topReply: { name: 'Priya S.', text: 'Yes \u2014 mine is wired after every episode. Slower shows before bed helped a lot.' }, expert: false },
   { id: 'q1', title: "Anyone else's 8yo asking about The Backrooms because of school?", anchor: 'The Backrooms (Found Footage)', videoId: 'backrooms', age: '5\u20138', seeded: false, replies: 6, topReply: { name: 'Dana M.', text: 'We watched the first 2 min together and talked about why it felt creepy, then skipped the rest.' }, expert: false },
   { id: 'q4', title: 'My 6yo has had nightmares after a few horror trailers \u2014 is this something to worry about?', anchor: 'Ages 5\u20138', videoId: '', age: '5\u20138', seeded: false, replies: 4, topReply: { name: 'Dr. Lena Ortiz', text: 'Occasional nightmares after scary content are common at this age. Keep a calm wind-down routine and revisit exposure gradually \u2014 reach out if it persists past two weeks.' }, expert: true },
-  { id: 'q3', title: 'How do you handle MrBeast-style "subscribe to win" prompts with older kids?', anchor: 'Last To Leave $800,000 Island', videoId: 'mrbeast', age: '9\u201312', seeded: false, replies: 8, topReply: { name: 'Kim H.', text: 'We turned it into a media-literacy chat about how giveaways farm subscriptions. Worked better than blocking.' }, expert: false },
+  { id: 'q3', title: 'How do you handle MrBeast-style "subscribe to win" prompts with older kids?', anchor: 'Last To Leave Grocery Store, Wins $250,000', videoId: 'mrbeast', age: '9\u201312', seeded: false, replies: 8, topReply: { name: 'Kim H.', text: 'We turned it into a media-literacy chat about how giveaways farm subscriptions. Worked better than blocking.' }, expert: false },
 ];
 
 const CIRCLES = [
@@ -286,32 +307,37 @@ const QUICK_TAGS = ['Wired after watching', 'Watched together', 'Skipped a part'
 
 const GENRE_VIDEO_SEEDS: Record<string, { name: string; age: string; color: string; vids: { ch: string; title: string; dur: string; overall: string; views: string; color: string; tags: string[] }[] }> = {
   music: { name: 'Music & Nursery Rhymes', age: '2+', color: '#3FA9D6', vids: [
+    { ch: 'Ms. Rachel', title: 'Toddler Learning with Ms Rachel', dur: '28:14', overall: 'lower', views: '372M views', color: '#4AAE7C', tags: ['products'] },
+    { ch: 'Fairy Tales and Stories for Kids', title: 'Mangita and Larina: A Magical Story', dur: '12:30', overall: 'moderate', views: '8.2M views', color: '#D8690E', tags: ['attention', 'violence'] },
     { ch: 'Cocomelon', title: 'Wheels on the Bus | Nursery Rhymes', dur: '3:42', overall: 'moderate', views: '312M views', color: '#2E8BC0', tags: ['attention', 'products'] },
     { ch: 'Pinkfong', title: 'Baby Shark Dance | Sing & Dance', dur: '2:17', overall: 'moderate', views: '13B views', color: '#F4A3C0', tags: ['attention'] },
     { ch: 'Super Simple Songs', title: 'Bath Song | Bedtime Routine', dur: '2:55', overall: 'lower', views: '2.1B views', color: '#7BC043', tags: ['attention'] },
-    { ch: 'Ms. Rachel', title: 'Learn to Talk | Toddler Learning Video', dur: '28:14', overall: 'lower', views: '372M views', color: '#4AAE7C', tags: ['products'] },
   ] },
   challenge: { name: 'Challenge, Stunt & Comedy', age: '9+', color: '#E8843A', vids: [
-    { ch: 'MrBeast', title: 'Last To Leave $800,000 Island Keeps It', dur: '16:24', overall: 'veryhigh', views: '143M views', color: '#2E6FB0', tags: ['attention', 'language', 'products'] },
+    { ch: 'MrBeast', title: 'Last To Leave Grocery Store, Wins $250,000', dur: '16:24', overall: 'veryhigh', views: '143M views', color: '#2E6FB0', tags: ['attention', 'language', 'products'] },
+    { ch: 'Chris and Jack', title: 'A vital message from your future self', dur: '8:07', overall: 'moderate', views: '2.1M views', color: '#423FE1', tags: ['attention'] },
     { ch: 'Dude Perfect', title: 'World Record Trick Shots Battle', dur: '12:03', overall: 'moderate', views: '61M views', color: '#1E88A8', tags: ['attention', 'products'] },
     { ch: 'LazarBeam', title: 'I Broke Minecraft With $10,000', dur: '10:41', overall: 'high', views: '18M views', color: '#3A7D2C', tags: ['language', 'attention'] },
     { ch: 'Zach King', title: 'Best Magic Tricks of 2026', dur: '8:12', overall: 'moderate', views: '44M views', color: '#D8690E', tags: ['attention', 'products'] },
   ] },
   gaming: { name: 'Gaming', age: '7+', color: '#8848C1', vids: [
+    { ch: 'KreekCraft', title: 'So.. Roblox lied..', dur: '16:07', overall: 'high', views: '4.2M views', color: '#E8843A', tags: ['language', 'attention', 'violence'] },
     { ch: 'DanTDM', title: 'Minecraft Hardcore \u2014 The Final Boss', dur: '18:22', overall: 'moderate', views: '9.4M views', color: '#8848C1', tags: ['violence', 'attention'] },
     { ch: 'SSundee', title: "Among Us But I'm the Impostor", dur: '14:07', overall: 'moderate', views: '12M views', color: '#2E7D32', tags: ['language', 'attention'] },
     { ch: 'Aphmau', title: 'My Roommate is a VAMPIRE!', dur: '11:55', overall: 'moderate', views: '7.8M views', color: '#5E35B1', tags: ['violence', 'attention'] },
     { ch: 'LankyBox', title: 'Roblox DOORS \u2014 Full Playthrough', dur: '22:30', overall: 'high', views: '15M views', color: '#E8843A', tags: ['violence', 'attention', 'products'] },
   ] },
   pretend: { name: 'Pretend Play & Toys', age: '4+', color: '#43A047', vids: [
+    { ch: 'Blippi', title: 'Blippi\u2019s Jurassic Puppy Show!', dur: '12:06', overall: 'moderate', views: '38M views', color: '#E88A2E', tags: ['attention', 'products'] },
     { ch: 'Kids Diana Show', title: 'Diana and Roma Pretend Play Shopping', dur: '9:14', overall: 'moderate', views: '89M views', color: '#43A047', tags: ['attention', 'products'] },
     { ch: "Ryan's World", title: 'Giant Egg Surprise Toy Hunt!', dur: '12:48', overall: 'moderate', views: '54M views', color: '#FBC02D', tags: ['products', 'attention'] },
     { ch: 'Vlad and Niki', title: 'Hide and Seek at the Playground', dur: '8:33', overall: 'moderate', views: '76M views', color: '#D8690E', tags: ['attention', 'products'] },
-    { ch: 'Blippi', title: 'Blippi Visits the Fire Station', dur: '12:06', overall: 'moderate', views: '38M views', color: '#E88A2E', tags: ['attention', 'products'] },
   ] },
   beauty: { name: 'Beauty, Makeup & ASMR', age: '13+', color: '#E41177', vids: [
+    { ch: 'Gibi ASMR', title: 'A Very Important Private Jet Flight | Luxury Flight Attendant', dur: '27:40', overall: 'high', views: '2.4M views', color: '#8E24AA', tags: ['sex', 'products', 'drugs'] },
+    { ch: 'James Charles', title: 'COME WITH ME TO COACHELLA 2026!', dur: '18:33', overall: 'veryhigh', views: '4.1M views', color: '#E41177', tags: ['language', 'sex', 'products'] },
+    { ch: "Grace's Room", title: 'A Simple Day in My Life | Vlog', dur: '14:22', overall: 'high', views: '1.6M views', color: '#D8690E', tags: ['products', 'language'] },
     { ch: 'Bailey Sarian', title: 'Murder, Mystery & Makeup Monday', dur: '34:11', overall: 'high', views: '3.2M views', color: '#C2185B', tags: ['violence', 'language', 'products'] },
-    { ch: 'Gibi ASMR', title: 'Personal Attention Roleplay for Sleep', dur: '27:40', overall: 'high', views: '2.4M views', color: '#8E24AA', tags: ['sex', 'products', 'drugs'] },
     { ch: 'Bretman Rock', title: 'Full Face Using ONLY Drugstore Makeup', dur: '19:02', overall: 'moderate', views: '5.1M views', color: '#D8690E', tags: ['language', 'products'] },
     { ch: 'Tati Westbrook', title: 'My Everyday Glam Routine 2026', dur: '22:15', overall: 'moderate', views: '1.8M views', color: '#5C6BC0', tags: ['products', 'drugs'] },
   ] },
@@ -327,19 +353,29 @@ const GENRE_PROFILES: Record<string, Record<string, number>> = {
 
 // ─── CATEGORY DATA ───────────────────────────────────────────────────────────
 
+// Channels with real analyses available
+const ANALYZED_CHANNELS = new Set([
+  'blippi', 'ms. rachel', 'ms rachel', 'gibi asmr', 'mrbeast', 'james charles',
+  'kreekcraft', 'chris and jack', 'grace\'s room', 'fairy tales and stories for kids',
+  'kane pixels',
+]);
+function isAnalyzed(name: string) { return ANALYZED_CHANNELS.has(name.toLowerCase()); }
+
 const CATEGORY_DATA = [
   { id: 'music', eyebrow: 'ages 2-4', name: 'Music & Nursery Rhymes', sample: 'Use these analyses to create Whitelist for YouTube Kids',
     accent: '#423FE1', tiles: [
+      { name: 'Ms. Rachel', color: '#33A544', img: '/chan-music-2.webp' },
+      { name: 'Fairy Tales and Stories for Kids', color: '#D8690E', img: '/cat-music-fairytales.webp' },
       { name: 'Cocomelon', color: '#423FE1', img: '/cat-music-0.webp' },
       { name: 'Pinkfong', color: '#1A7E22', img: '/cat-music-1.webp' },
       { name: 'Super Simple Songs', color: '#2B3A8E', img: '/cat-music-2.webp' },
       { name: 'ChuChu TV', color: '#D8690E', img: '/chan-music-0.webp' },
       { name: 'Little Baby Bum', color: '#FFC60B', img: '/chan-music-1.webp' },
-      { name: 'Ms. Rachel', color: '#33A544', img: '/chan-music-2.webp' },
     ] },
   { id: 'challenge', eyebrow: 'ages 8-11+', name: 'Challenge, Stunt & Comedy Entertainment', sample: 'Challenge videos, Stunts, Pranks & Comedy content popular among tweens',
     accent: '#D8690E', tiles: [
       { name: 'MrBeast', color: '#D8690E', img: '/cat-challenge-0.webp' },
+      { name: 'Chris and Jack', color: '#423FE1', img: '/cat-challenge-chrisandjack.webp' },
       { name: 'Dude Perfect', color: '#FFC60B', img: '/cat-challenge-1.webp' },
       { name: 'LazarBeam', color: '#8848C1', img: '/cat-challenge-2.webp' },
       { name: 'Unspeakable', color: '#423FE1', img: '/chan-challenge-0.webp' },
@@ -348,30 +384,33 @@ const CATEGORY_DATA = [
     ] },
   { id: 'gaming', eyebrow: 'ages 8-11+', name: 'Gaming', sample: 'Roblox, Minecraft, Gaming Streaming content popular among teens & pre-teens',
     accent: '#8848C1', tiles: [
+      { name: 'KreekCraft', color: '#E8843A', img: '/cat-gaming-kreekcraft.webp' },
       { name: 'DanTDM', color: '#8848C1', img: '/cat-gaming-0.webp' },
       { name: 'Aphmau', color: '#423FE1', img: '/cat-gaming-1.webp' },
       { name: 'LankyBox', color: '#D8690E', img: '/cat-gaming-2.webp' },
-      { name: 'SSundee', color: '#1A7E22' },
-      { name: 'Grian', color: '#FFC60B' },
-      { name: 'MrBeast Gaming', color: '#D8690E' },
+      { name: 'SSundee', color: '#1A7E22', img: '/cat-gaming-ssundee.webp' },
+      { name: 'Grian', color: '#FFC60B', img: '/cat-gaming-grian.webp' },
+      { name: 'MrBeast Gaming', color: '#D8690E', img: '/cat-gaming-mrbeastgaming.webp' },
     ] },
   { id: 'pretend', eyebrow: 'ages 5-7, 8-11+', name: 'Pretend Play, Toys & Family Adventure', sample: 'Toy-Unboxing, Kids Pranks, Family creators content',
     accent: '#1A7E22', tiles: [
+      { name: 'Blippi', color: '#E8843A', img: '/cat-pretend-blippi.webp' },
       { name: 'Kids Diana Show', color: '#1A7E22', img: '/cat-pretend-0.webp' },
       { name: 'Vlad and Niki', color: '#D8690E', img: '/cat-pretend-1.webp' },
       { name: 'Toy-Unboxing', color: '#423FE1', img: '/cat-pretend-2.webp' },
-      { name: "Ryan's World", color: '#FFC60B' },
-      { name: 'Blippi', color: '#E8843A' },
-      { name: 'Toys and Colors', color: '#8848C1' },
+      { name: "Ryan's World", color: '#FFC60B', img: '/cat-pretend-ryansworld.webp' },
+      { name: 'Toys and Colors', color: '#8848C1', img: '/cat-pretend-toysandcolors.webp' },
     ] },
   { id: 'beauty', eyebrow: 'ages 5-7, 8-11+', name: 'Beauty / Makeup / ASMR', sample: 'Makeup tutorials, GRWM, Shopping Hauls, ASMR, Beauty Vloggers content',
     accent: '#E41177', tiles: [
+      { name: 'Gibi ASMR', color: '#8848C1', img: '/cat-beauty-2.webp' },
+      { name: 'James Charles', color: '#E41177', img: '/cat-beauty-jamescharies.webp' },
+      { name: "Grace's Room", color: '#D8690E', img: '/cat-beauty-gracesroom.webp' },
       { name: 'Bailey Sarian', color: '#E41177', img: '/cat-beauty-0.webp' },
       { name: 'Bretman Rock', color: '#D8690E', img: '/cat-beauty-1.webp' },
-      { name: 'Gibi ASMR', color: '#8848C1', img: '/cat-beauty-2.webp' },
-      { name: 'Tati Westbrook', color: '#423FE1' },
-      { name: 'Carli Bybel', color: '#FFC60B' },
-      { name: 'GentleWhispering', color: '#1A7E22' },
+      { name: 'Tati Westbrook', color: '#423FE1', img: '/cat-beauty-tatiwestbrook.webp' },
+      { name: 'Carli Bybel', color: '#FFC60B', img: '/cat-beauty-carlibybel.webp' },
+      { name: 'GentleWhispering', color: '#1A7E22', img: '/cat-beauty-gentlewhispering.webp' },
     ] },
 ];
 
@@ -454,10 +493,21 @@ function buildGenreVideos() {
       const thumbMap: Record<string, string> = {
         'music-0': '/vidthumb-music-v0.webp', 'music-1': '/vidthumb-music-v1.webp',
         'music-2': '/vidthumb-music-v2.webp', 'music-3': '/vidthumb-music-v3.webp',
-        'mrbeast': '/vidthumb-mrbeast.webp',
+        'music-4': '/vidthumb-music-v4.webp',
+        'challenge-0': '/vidthumb-challenge-v0.webp', 'challenge-1': '/vidthumb-challenge-v1.webp',
+        'challenge-2': '/vidthumb-challenge-v2.webp', 'challenge-3': '/vidthumb-challenge-v3.webp',
+        'challenge-4': '/vidthumb-challenge-v4.webp',
+        'gaming-0': '/vidthumb-gaming-v0.webp', 'gaming-1': '/vidthumb-gaming-v1.webp',
+        'gaming-2': '/vidthumb-gaming-v2.webp', 'gaming-3': '/vidthumb-gaming-v3.webp',
+        'gaming-4': '/vidthumb-gaming-v4.webp',
+        'pretend-0': '/vidthumb-pretend-v0.webp', 'pretend-1': '/vidthumb-pretend-v1.webp',
+        'pretend-2': '/vidthumb-pretend-v2.webp', 'pretend-3': '/vidthumb-pretend-v3.webp',
+        'beauty-0': '/vidthumb-beauty-v0.webp', 'beauty-1': '/vidthumb-beauty-v1.webp',
+        'beauty-2': '/vidthumb-beauty-v2.webp', 'beauty-3': '/vidthumb-beauty-v3.webp',
+        'beauty-4': '/vidthumb-beauty-v4.webp', 'beauty-5': '/vidthumb-beauty-v5.webp',
       };
       const thumbKey = gid + '-' + vi;
-      const thumb = thumbMap[thumbKey] || (v.ch === 'MrBeast' ? '/vidthumb-mrbeast.webp' : undefined);
+      const thumb = thumbMap[thumbKey];
       return {
         id: gid + '-v' + vi, genre: gid, title: v.title, channel: v.ch,
         duration: v.dur, durS, views: v.views, age: g.age, overall: v.overall,
@@ -482,7 +532,10 @@ function catScores(name: string, genreId: string) {
 // ─── MAIN COMPONENT ─────────────────────────────────────────────────────────
 
 export default function Dashboard() {
-  const [screen, setScreen] = useState('home');
+  const [screen, setScreenRaw] = useState('home');
+  const [prevScreen, setPrevScreen] = useState('home');
+  const screenRef = useRef('home');
+  const setScreen = useCallback((s: string) => { setPrevScreen(screenRef.current); screenRef.current = s; setScreenRaw(s); }, []);
   const [url, setUrl] = useState('');
   const [analyzing, setAnalyzing] = useState(false);
   const [scanStep, setScanStep] = useState(0);
@@ -552,7 +605,7 @@ export default function Dashboard() {
   const childInitial = childName.charAt(0);
   const childAgeVal = obAge || '9';
 
-  const titles: Record<string, string> = { home: 'Kids Safe Video Analyzer', analysis: 'Video Analysis', tedio: 'Watch History', watchlist: 'Creator Leaderboard', activity: 'Community', genre: 'Category', channel: 'Channel', allvideos: 'All Analyzed Videos' };
+  const titles: Record<string, string> = { home: 'Kids Safe Video Analyzer', analysis: 'Video Analysis', tedio: 'Watch History', watchlist: 'Creator Leaderboard', activity: 'Community', genre: 'Category', channel: 'Channel', allvideos: 'All Analyzed Videos', addchild: 'Add a Child' };
 
   const decorate = (a: Analysis) => ({
     ...a,
@@ -565,7 +618,7 @@ export default function Dashboard() {
     bgStyle: a.thumb ? `url("${a.thumb}") center/cover no-repeat, ${a.thumbBg}` : a.thumbBg,
   });
 
-  const recent = ['backrooms', 'blippi', 'msrachel', 'residentevil'].map(id => decorate(ANALYSES.find(a => a.id === id)!));
+  const recent = ['backrooms', 'blippi', 'msrachel', 'kreekcraft'].map(id => decorate(ANALYSES.find(a => a.id === id)!));
   const trending = TRENDING.map(t => ({ ...decorate(ANALYSES.find(a => a.id === t.id)!), viewers: t.viewers }));
 
   const curGenreData = CATEGORY_DATA.find(c => c.id === currentGenre) || CATEGORY_DATA[0];
@@ -779,7 +832,7 @@ export default function Dashboard() {
               </span>
             </button>
           ) : (
-            <button onClick={() => goScreen('tedio')} style={{ display: 'flex', alignItems: 'center', gap: '8px', width: '100%', padding: '8px 10px', border: '1px dashed #CCCCCC', background: 'transparent', borderRadius: '8px', cursor: 'pointer', fontSize: '13px', fontWeight: 700, color: '#757575', fontFamily: "'Lato',sans-serif" }}>
+            <button onClick={() => goScreen('addchild')} style={{ display: 'flex', alignItems: 'center', gap: '8px', width: '100%', padding: '8px 10px', border: '1px dashed #CCCCCC', background: 'transparent', borderRadius: '8px', cursor: 'pointer', fontSize: '13px', fontWeight: 700, color: '#757575', fontFamily: "'Lato',sans-serif" }}>
               <span style={{ fontSize: '16px', lineHeight: 1 }}>+</span> Add a child profile
             </button>
           )}
@@ -876,7 +929,7 @@ export default function Dashboard() {
             return realUrl ? (
             <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
               <div style={{ padding: '12px 40px 0' }}>
-                <button onClick={() => goScreen('home')} style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', border: 'none', background: 'transparent', fontFamily: "'Lato',sans-serif", fontSize: '13px', fontWeight: 700, color: '#757575', cursor: 'pointer', padding: '0 0 8px' }}>&larr; Back to Analyzer</button>
+                <button onClick={() => { const dest = prevScreen === 'genre' || prevScreen === 'channel' || prevScreen === 'allvideos' ? prevScreen : 'home'; setScreen(dest); }} style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', border: 'none', background: 'transparent', fontFamily: "'Lato',sans-serif", fontSize: '13px', fontWeight: 700, color: '#757575', cursor: 'pointer', padding: '0 0 8px' }}>&larr; {prevScreen === 'genre' ? `Back to ${curGenreData.name}` : prevScreen === 'channel' && currentChannel ? `Back to ${currentChannel.name}` : prevScreen === 'allvideos' ? 'Back to All Videos' : 'Back to Analyzer'}</button>
               </div>
               <iframe src={realUrl} style={{ flex: 1, width: '100%', border: 'none', minHeight: 'calc(100vh - 120px)' }} title="Video Analysis" />
               <div style={{ display: 'none' }}>
@@ -934,22 +987,40 @@ export default function Dashboard() {
                   <div style={{ padding: '24px 28px 14px' }}>
                     <h3 style={{ fontFamily: "'Lato',sans-serif", fontWeight: 700, fontSize: '22px', color: '#222', margin: 0 }}>What Did We Find?</h3>
                   </div>
-                  {anFind.map(f => (
-                    <button key={f.key} onClick={() => setAnSel(prev => prev.includes(f.key) ? prev.filter(x => x !== f.key) : [...prev, f.key])} style={{ display: 'grid', gridTemplateColumns: 'minmax(0,1fr) auto', gap: '16px', alignItems: 'start', width: '100%', textAlign: 'left', border: 'none', borderTop: '1px solid #EFEFEF', background: 'transparent', padding: '16px 28px', cursor: 'pointer', fontFamily: "'Lato',sans-serif" }}>
-                      <span style={{ display: 'flex', flexDirection: 'column', gap: '4px', minWidth: 0 }}>
-                        <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                          <span style={{ fontSize: '17px', fontWeight: 700, color: f.nameColor }}>{f.name}</span>
-                          {f.isNew && <span style={{ background: '#423FE1', color: '#fff', fontSize: '10px', fontWeight: 800, letterSpacing: '0.05em', padding: '2px 7px', borderRadius: '5px' }}>NEW</span>}
+                  {anFind.map(f => {
+                    const isExpanded = anSel.includes(f.key);
+                    const moments = anMoments.filter(m => m.cat === f.key);
+                    const isAttention = f.key === 'attention';
+                    return (
+                    <div key={f.key} style={{ borderTop: '1px solid #EFEFEF', background: isAttention && moments.length > 0 ? CATS.attention.tint : 'transparent' }}>
+                      <button onClick={() => setAnSel(prev => prev.includes(f.key) ? prev.filter(x => x !== f.key) : [...prev, f.key])} style={{ display: 'grid', gridTemplateColumns: 'minmax(0,1fr) auto', gap: '16px', alignItems: 'start', width: '100%', textAlign: 'left', border: 'none', background: 'transparent', padding: isAttention && moments.length > 0 ? '16px 28px 12px' : '16px 28px', cursor: 'pointer', fontFamily: "'Lato',sans-serif" }}>
+                        <span style={{ display: 'flex', flexDirection: 'column', gap: '4px', minWidth: 0 }}>
+                          <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                            {isAttention && moments.length > 0 && <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: '22px', height: '22px', borderRadius: '6px', background: CATS.attention.color, flexShrink: 0 }}><svg width="12" height="12" viewBox="0 0 24 24" fill="#fff" stroke="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg></span>}
+                            <span style={{ fontSize: '17px', fontWeight: 700, color: f.nameColor }}>{f.name}</span>
+                            {f.isNew && <span style={{ background: '#423FE1', color: '#fff', fontSize: '10px', fontWeight: 800, letterSpacing: '0.05em', padding: '2px 7px', borderRadius: '5px' }}>NEW</span>}
+                          </span>
+                          <span style={{ fontSize: '13px', lineHeight: 1.5, color: '#3B3B3C' }}>{f.note}</span>
                         </span>
-                        <span style={{ fontSize: '13px', lineHeight: 1.5, color: '#3B3B3C' }}>{f.note}</span>
-                      </span>
-                      <span style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '4px' }}>
-                        {f.levelTag && <span style={{ color: '#D8690E', fontWeight: 800, fontSize: '12px', letterSpacing: '0.06em' }}>{f.levelTag}</span>}
-                        <span style={{ fontSize: '12px', color: '#757575', whiteSpace: 'nowrap' }}>{f.countLabel}</span>
-                        <span style={{ color: '#999999', fontSize: '16px', lineHeight: 1 }}>&rsaquo;</span>
-                      </span>
-                    </button>
-                  ))}
+                        <span style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: '4px' }}>
+                          {f.levelTag && <span style={{ color: '#D8690E', fontWeight: 800, fontSize: '12px', letterSpacing: '0.06em' }}>{f.levelTag}</span>}
+                          <span style={{ fontSize: '12px', color: '#757575', whiteSpace: 'nowrap' }}>{f.countLabel}</span>
+                          <span style={{ color: '#999999', fontSize: '16px', lineHeight: 1, transition: 'transform 150ms', transform: isExpanded ? 'rotate(90deg)' : 'none' }}>&rsaquo;</span>
+                        </span>
+                      </button>
+                      {isExpanded && moments.length > 0 && (
+                        <div style={{ padding: '0 28px 16px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                          {moments.map((m, mi) => (
+                            <div key={mi} style={{ display: 'flex', gap: '12px', alignItems: 'flex-start', padding: '10px 14px', background: '#fff', borderRadius: '8px', border: '1px solid #E8E8E8' }}>
+                              <span style={{ flexShrink: 0, display: 'inline-flex', alignItems: 'center', justifyContent: 'center', padding: '3px 8px', borderRadius: '6px', background: CATS[f.key]?.tint || '#F2F2F2', color: CATS[f.key]?.fg || '#222', fontSize: '12px', fontWeight: 700, fontFamily: "'Lato',sans-serif" }}>{m.time}</span>
+                              <span style={{ fontSize: '13px', lineHeight: 1.5, color: '#222' }}>{m.label}</span>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                    );
+                  })}
                 </section>
               </div>
 
@@ -1030,7 +1101,7 @@ export default function Dashboard() {
             ) : (
             <div style={{ maxWidth: '560px', margin: '80px auto', padding: '0 24px' }}>
               <div style={{ padding: '12px 0 0' }}>
-                <button onClick={() => goScreen('home')} style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', border: 'none', background: 'transparent', fontFamily: "'Lato',sans-serif", fontSize: '13px', fontWeight: 700, color: '#757575', cursor: 'pointer', padding: '0 0 16px' }}>&larr; Back to Analyzer</button>
+                <button onClick={() => { const dest = prevScreen === 'genre' || prevScreen === 'channel' || prevScreen === 'allvideos' ? prevScreen : 'home'; setScreen(dest); }} style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', border: 'none', background: 'transparent', fontFamily: "'Lato',sans-serif", fontSize: '13px', fontWeight: 700, color: '#757575', cursor: 'pointer', padding: '0 0 16px' }}>&larr; {prevScreen === 'genre' ? `Back to ${curGenreData.name}` : prevScreen === 'channel' && currentChannel ? `Back to ${currentChannel.name}` : prevScreen === 'allvideos' ? 'Back to All Videos' : 'Back to Analyzer'}</button>
               </div>
               <section style={{ background: '#fff', border: '1px solid #33A544', borderRadius: '12px', boxShadow: '0 2px 8px rgba(0,0,0,0.10)', padding: '40px 36px 36px', display: 'flex', flexDirection: 'column', gap: '16px', textAlign: 'center', alignItems: 'center' }}>
                 <div style={{ width: '56px', height: '56px', borderRadius: '999px', background: '#F2FEEE', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -1065,11 +1136,22 @@ export default function Dashboard() {
                 <span style={{ fontSize: '13px', color: '#757575' }}>{curGenreVideos.length} analyzed</span>
               </div>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '22px', marginBottom: '44px' }}>
-                {curGenreVideos.map(v => (
-                  <button key={v.id} onClick={() => { setCurrentId(v.id); setAnSel([]); setScreen('analysis'); }} style={{ textAlign: 'left', background: '#fff', border: '1px solid #EFEFEF', borderRadius: '12px', padding: '10px 10px 14px', fontFamily: "'Lato',sans-serif", cursor: 'pointer', display: 'flex', flexDirection: 'column', gap: '9px', boxShadow: '0 1px 3px rgba(0,0,0,0.06)' }}>
+                {curGenreVideos.map(v => {
+                  const hasAnalysis = isAnalyzed(v.channel);
+                  return (
+                  <button key={v.id} onClick={() => { if (hasAnalysis) { setCurrentId(v.id); setAnSel([]); setScreen('analysis'); } }} style={{ textAlign: 'left', background: '#fff', border: hasAnalysis ? '2px solid #33A544' : '1px solid #EFEFEF', borderRadius: '12px', padding: '10px 10px 14px', fontFamily: "'Lato',sans-serif", cursor: hasAnalysis ? 'pointer' : 'default', display: 'flex', flexDirection: 'column', gap: '9px', boxShadow: '0 1px 3px rgba(0,0,0,0.06)', opacity: hasAnalysis ? 1 : 0.5 }}>
                     <div style={{ position: 'relative', aspectRatio: '16/9', borderRadius: '8px', overflow: 'hidden', background: v.thumbBg }}>
                       {v.thumb && <img src={v.thumb} alt={v.title} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />}
                       <span style={{ position: 'absolute', bottom: '8px', right: '8px', zIndex: 2, background: 'rgba(0,0,0,0.8)', color: '#fff', fontSize: '11px', fontWeight: 700, padding: '2px 6px', borderRadius: '4px' }}>{v.duration}</span>
+                      {hasAnalysis && (
+                        <span style={{ position: 'absolute', top: '8px', left: '8px', zIndex: 3, display: 'inline-flex', alignItems: 'center', gap: '4px', padding: '3px 8px', borderRadius: '6px', background: '#33A544', color: '#fff', fontSize: '10px', fontWeight: 700, letterSpacing: '0.04em', textTransform: 'uppercase', fontFamily: "'Lato',sans-serif" }}>
+                          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                          Analyzed
+                        </span>
+                      )}
+                      {!hasAnalysis && (
+                        <span style={{ position: 'absolute', top: '8px', left: '8px', zIndex: 3, display: 'inline-flex', alignItems: 'center', padding: '3px 8px', borderRadius: '6px', background: 'rgba(0,0,0,0.55)', color: '#ccc', fontSize: '10px', fontWeight: 700, letterSpacing: '0.04em', textTransform: 'uppercase', fontFamily: "'Lato',sans-serif" }}>Example</span>
+                      )}
                     </div>
                     <div style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', color: '#757575' }}>YouTube Video</div>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '7px' }}>
@@ -1087,19 +1169,31 @@ export default function Dashboard() {
                       ))}
                     </div>
                   </button>
-                ))}
+                  );
+                })}
               </div>
 
               <h5 style={{ fontFamily: "'Lato',sans-serif", fontWeight: 700, fontSize: '13px', letterSpacing: '0.08em', textTransform: 'uppercase', color: '#222', margin: '0 0 6px' }}>Browse by channel</h5>
               <p style={{ fontSize: '13px', color: '#757575', margin: '0 0 16px' }}>Jump into every analysis from a specific creator in this category.</p>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))', gap: '16px' }}>
-                {curGenreData.tiles.map((ch, i) => (
-                  <div key={i} onClick={() => { setCurrentChannel({ name: ch.name, color: ch.color, genreName: curGenreData.name, genreId: curGenreData.id }); setScreen('channel'); }} style={{ position: 'relative', aspectRatio: '2/3', borderRadius: '10px', overflow: 'hidden', cursor: 'pointer', background: ch.color, boxShadow: '0 2px 8px rgba(0,0,0,0.12)' }}>
+                {curGenreData.tiles.map((ch, i) => {
+                  const hasAnalysis = isAnalyzed(ch.name);
+                  return (
+                  <div key={i} onClick={() => { if (hasAnalysis) { setCurrentChannel({ name: ch.name, color: ch.color, genreName: curGenreData.name, genreId: curGenreData.id }); setScreen('channel'); } }} style={{ position: 'relative', aspectRatio: '2/3', borderRadius: '10px', overflow: 'hidden', cursor: hasAnalysis ? 'pointer' : 'default', background: ch.color, boxShadow: '0 2px 8px rgba(0,0,0,0.12)', opacity: hasAnalysis ? 1 : 0.5, filter: hasAnalysis ? 'none' : 'grayscale(0.4)' }}>
                     {(ch as {img?: string}).img && <img src={(ch as {img?: string}).img} alt={ch.name} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />}
                     <span style={{ position: 'absolute', inset: 0, pointerEvents: 'none', background: 'linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.08) 45%, rgba(0,0,0,0) 68%)' }}></span>
+                    {hasAnalysis ? (
+                      <span style={{ position: 'absolute', top: '8px', left: '8px', zIndex: 3, display: 'inline-flex', alignItems: 'center', gap: '4px', padding: '3px 8px', borderRadius: '6px', background: '#33A544', color: '#fff', fontSize: '10px', fontWeight: 700, letterSpacing: '0.04em', textTransform: 'uppercase', fontFamily: "'Lato',sans-serif" }}>
+                        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        Analyzed
+                      </span>
+                    ) : (
+                      <span style={{ position: 'absolute', top: '8px', left: '8px', zIndex: 3, display: 'inline-flex', alignItems: 'center', padding: '3px 8px', borderRadius: '6px', background: 'rgba(0,0,0,0.5)', color: '#ccc', fontSize: '10px', fontWeight: 700, letterSpacing: '0.04em', textTransform: 'uppercase', fontFamily: "'Lato',sans-serif" }}>Coming soon</span>
+                    )}
                     <span style={{ position: 'absolute', bottom: '12px', left: '12px', right: '12px', zIndex: 2, pointerEvents: 'none', color: '#fff', fontFamily: "'Lato',sans-serif", fontWeight: 700, fontSize: '15px', lineHeight: 1.2, textShadow: '0 1px 3px rgba(0,0,0,.5)' }}>{ch.name}</span>
                   </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
           )}
@@ -1232,11 +1326,21 @@ export default function Dashboard() {
                   .filter(v => wlGenres[0] === 'All genres' || CATEGORY_DATA.some(c => c.name === wlGenres[0] && v.genre === c.id))
                   .map(v => {
                     const lev = LEVELS[v.overall] || LEVELS.moderate;
+                    const hasAnalysis = isAnalyzed(v.channel);
                     return (
-                      <button key={v.id} onClick={() => { setCurrentId(v.id); setScreen('analysis'); }} style={{ textAlign: 'left', background: '#fff', border: '1px solid #EFEFEF', borderRadius: '12px', padding: '10px 10px 14px', fontFamily: "'Lato',sans-serif", cursor: 'pointer', display: 'flex', flexDirection: 'column', gap: '9px', boxShadow: '0 1px 3px rgba(0,0,0,0.06)' }}>
+                      <button key={v.id} onClick={() => { if (hasAnalysis) { setCurrentId(v.id); setScreen('analysis'); } }} style={{ textAlign: 'left', background: '#fff', border: hasAnalysis ? '2px solid #33A544' : '1px solid #EFEFEF', borderRadius: '12px', padding: '10px 10px 14px', fontFamily: "'Lato',sans-serif", cursor: hasAnalysis ? 'pointer' : 'default', display: 'flex', flexDirection: 'column', gap: '9px', boxShadow: '0 1px 3px rgba(0,0,0,0.06)', opacity: hasAnalysis ? 1 : 0.5 }}>
                         <div style={{ position: 'relative', aspectRatio: '16/9', borderRadius: '8px', overflow: 'hidden', background: v.thumb ? 'transparent' : '#ddd' }}>
                           {v.thumb && <img src={v.thumb} alt={v.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />}
                           <span style={{ position: 'absolute', bottom: '8px', right: '8px', zIndex: 2, background: 'rgba(0,0,0,0.8)', color: '#fff', fontSize: '11px', fontWeight: 700, padding: '2px 6px', borderRadius: '4px' }}>{v.duration || '0:00'}</span>
+                          {hasAnalysis && (
+                            <span style={{ position: 'absolute', top: '8px', left: '8px', zIndex: 3, display: 'inline-flex', alignItems: 'center', gap: '4px', padding: '3px 8px', borderRadius: '6px', background: '#33A544', color: '#fff', fontSize: '10px', fontWeight: 700, letterSpacing: '0.04em', textTransform: 'uppercase', fontFamily: "'Lato',sans-serif" }}>
+                              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                              Analyzed
+                            </span>
+                          )}
+                          {!hasAnalysis && (
+                            <span style={{ position: 'absolute', top: '8px', left: '8px', zIndex: 3, display: 'inline-flex', alignItems: 'center', padding: '3px 8px', borderRadius: '6px', background: 'rgba(0,0,0,0.55)', color: '#ccc', fontSize: '10px', fontWeight: 700, letterSpacing: '0.04em', textTransform: 'uppercase', fontFamily: "'Lato',sans-serif" }}>Example</span>
+                          )}
                         </div>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                           <span style={{ display: 'inline-flex', padding: '3px 8px', borderRadius: '6px', fontSize: '10px', fontWeight: 800, background: lev.bg, color: lev.fg }}>{lev.label}</span>
@@ -1251,6 +1355,43 @@ export default function Dashboard() {
             </div>
             );
           })()}
+
+          {/* ================= ADD CHILD PROFILE ================= */}
+          {screen === 'addchild' && (
+            <div style={{ maxWidth: '480px', margin: '60px auto', padding: '0 24px' }}>
+              {obStep < 2 ? (
+              <section style={{ background: '#fff', border: '1px solid #33A544', borderRadius: '16px', boxShadow: '0 4px 20px rgba(0,0,0,0.08)', padding: '44px 40px 40px', display: 'flex', flexDirection: 'column', gap: '20px', alignItems: 'center' }}>
+                <div style={{ width: '56px', height: '56px', borderRadius: '999px', background: '#F2FEEE', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#33A544" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                </div>
+                <h1 style={{ fontFamily: "var(--font-source-serif),'Source Serif Pro',Georgia,serif", fontWeight: 400, fontSize: '28px', color: '#222', margin: 0, textAlign: 'center' }}>Add a child profile</h1>
+                <p style={{ fontSize: '14px', color: '#757575', textAlign: 'center', margin: 0, lineHeight: 1.5 }}>We&apos;ll personalize the dashboard based on your child&apos;s age.</p>
+
+                <div style={{ width: '100%', display: 'flex', flexDirection: 'column', gap: '16px', marginTop: '8px' }}>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                    <label style={{ fontSize: '13px', fontWeight: 700, color: '#222', fontFamily: "'Lato',sans-serif" }}>Name or nickname</label>
+                    <input value={obName} onChange={e => setObName(e.target.value)} placeholder="e.g. Liam, Bug, Kiddo" style={{ height: '48px', borderRadius: '10px', border: '1px solid #CCCCCC', padding: '0 16px', fontFamily: "'Lato',sans-serif", fontSize: '15px', color: '#222', outline: 'none', background: '#FAFAFA' }} />
+                  </div>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                    <label style={{ fontSize: '13px', fontWeight: 700, color: '#222', fontFamily: "'Lato',sans-serif" }}>Age</label>
+                    <input value={obAge} onChange={e => { const v = e.target.value.replace(/[^0-9]/g, ''); if (v === '' || (Number(v) >= 1 && Number(v) <= 18)) setObAge(v); }} placeholder="e.g. 9" inputMode="numeric" style={{ height: '48px', width: '100px', borderRadius: '10px', border: '1px solid #CCCCCC', padding: '0 16px', fontFamily: "'Lato',sans-serif", fontSize: '15px', color: '#222', outline: 'none', background: '#FAFAFA' }} />
+                  </div>
+                </div>
+
+                <button onClick={() => { if (obName.trim() && obAge) { setChildAdded(true); setObStep(2); } }} disabled={!obName.trim() || !obAge} style={{ width: '100%', height: '50px', borderRadius: '12px', border: 'none', background: obName.trim() && obAge ? '#1A7E22' : '#CCCCCC', color: '#fff', fontFamily: "'Lato',sans-serif", fontWeight: 700, fontSize: '16px', cursor: obName.trim() && obAge ? 'pointer' : 'default', marginTop: '8px', transition: 'background 150ms' }}>Add {obName.trim() || 'child'} to dashboard</button>
+              </section>
+              ) : (
+              <section style={{ background: '#fff', border: '1px solid #33A544', borderRadius: '16px', boxShadow: '0 4px 20px rgba(0,0,0,0.08)', padding: '52px 40px', display: 'flex', flexDirection: 'column', gap: '16px', alignItems: 'center', textAlign: 'center' }}>
+                <div style={{ width: '64px', height: '64px', borderRadius: '999px', background: '#33A544', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </div>
+                <h1 style={{ fontFamily: "var(--font-source-serif),'Source Serif Pro',Georgia,serif", fontWeight: 400, fontSize: '28px', color: '#222', margin: 0 }}>Welcome, {obName}!</h1>
+                <p style={{ fontSize: '15px', color: '#757575', margin: 0, lineHeight: 1.5 }}>We&apos;ve added {obName} (age {obAge}) to your dashboard.</p>
+                <button onClick={() => { setObStep(0); setScreen('home'); }} style={{ width: '100%', height: '50px', borderRadius: '12px', border: 'none', background: '#1A7E22', color: '#fff', fontFamily: "'Lato',sans-serif", fontWeight: 700, fontSize: '16px', cursor: 'pointer', marginTop: '8px' }}>Go to dashboard</button>
+              </section>
+              )}
+            </div>
+          )}
 
           {/* ================= TEDIO / WATCH HISTORY ================= */}
           {screen === 'tedio' && (
