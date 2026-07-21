@@ -11,9 +11,11 @@ a:hover { color: #1A7E22; }
 
 /* ─── Mobile responsive ─── */
 @media (max-width: 768px) {
-  .csm-shell { flex-direction: column !important; }
+  .csm-shell { flex-direction: column !important; height: auto !important; min-height: 100vh !important; overflow: visible !important; }
   .csm-sidebar { display: none !important; }
-  .csm-sidebar.csm-sidebar--open { display: flex !important; position: fixed; inset: 0; z-index: 100; width: 100% !important; flex: none !important; }
+  .csm-sidebar.csm-sidebar--open { display: flex !important; position: fixed; inset: 0; z-index: 100; width: 100% !important; flex: none !important; overflow-y: auto !important; }
+  .csm-main { min-height: 0 !important; overflow: visible !important; }
+  .csm-main > main { overflow: visible !important; }
   .csm-mobile-bar { display: flex !important; }
   .csm-main { width: 100% !important; }
   .csm-hero-title { font-size: 26px !important; }
