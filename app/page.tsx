@@ -545,7 +545,7 @@ export default function Dashboard() {
   const [obStep, setObStep] = useState(0);
   const [obName, setObName] = useState('');
   const [obAge, setObAge] = useState('');
-  const [wlOpen, setWlOpen] = useState(true);
+  const [wlOpen, setWlOpen] = useState(false);
   const [wlGenres, setWlGenres] = useState<string[]>(['All genres']);
   const [wlOrder, setWlOrder] = useState('concern');
   const [wlAge, setWlAge] = useState('5\u20138');
@@ -557,6 +557,7 @@ export default function Dashboard() {
   const [joined, setJoined] = useState<Record<string, boolean>>({ circle1: true });
   const [promptDismissed, setPromptDismissed] = useState(false);
   const [panelOpen, setPanelOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [panelRec, setPanelRec] = useState<string | null>(null);
   const [panelLiked, setPanelLiked] = useState<Record<string, boolean>>({});
   const [composeActive, setComposeActive] = useState(false);
@@ -596,7 +597,7 @@ export default function Dashboard() {
     }, 750);
   }, [analyzing]);
 
-  const goScreen = useCallback((s: string) => setScreen(s), []);
+  const goScreen = useCallback((s: string) => { setScreen(s); setMobileMenuOpen(false); }, []);
 
   // ─── Derived data ──────────────────────────────────────────────────────────
 
@@ -739,7 +740,7 @@ export default function Dashboard() {
   });
 
   const tedioTeaser = childAdded ? '2 of 4 patterns need your attention.' : 'Too many videos to vet one by one?';
-  const tedioTeaserBody = childAdded ? 'Rapid Swiping is at 78% \u2014 worth a conversation this week.' : "Add your kid's watch history and we'll surface the patterns that matter \u2014 autoplay traps, Shorts loops, late-night sessions.";
+  const tedioTeaserBody = childAdded ? 'Rapid Swiping is at 78% \u2014 worth a conversation this week.' : "Add your kid's watch history and we'll flag channels, videos, and activity that may need a closer look.";
   const tedioTeaserCta = childAdded ? `See ${childName}'s report` : 'Set up Watch History';
 
   // Channel detail
@@ -798,10 +799,11 @@ export default function Dashboard() {
   // ─── RENDER ────────────────────────────────────────────────────────────────
 
   return (
-    <div style={{ display: 'flex', height: '100vh', overflow: 'hidden', background: '#F7F7F7', fontFamily: "var(--font-lato),'Lato',-apple-system,sans-serif", color: '#222222' }}>
+    <div className="csm-shell" style={{ display: 'flex', height: '100vh', overflow: 'hidden', background: '#F7F7F7', fontFamily: "var(--font-lato),'Lato',-apple-system,sans-serif", color: '#222222' }}>
 
       {/* ============ SIDEBAR ============ */}
-      <nav style={{ width: '236px', flex: '0 0 236px', background: '#FFFFFF', borderRight: '1px solid #EFEFEF', display: 'flex', flexDirection: 'column', padding: '20px 14px 16px' }}>
+      <nav className={`csm-sidebar${mobileMenuOpen ? ' csm-sidebar--open' : ''}`} style={{ width: '236px', flex: '0 0 236px', background: '#FFFFFF', borderRight: '1px solid #EFEFEF', display: 'flex', flexDirection: 'column', padding: '20px 14px 16px' }}>
+        <button className="csm-mobile-bar" onClick={() => setMobileMenuOpen(false)} style={{ alignSelf: 'flex-end', border: 'none', background: 'transparent', fontSize: '24px', cursor: 'pointer', padding: '4px 8px', color: '#757575' }}>&times;</button>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src="/horizontal-fullcolor.svg" alt="Common Sense Media" onClick={() => goScreen('home')} style={{ width: '170px', margin: '4px 8px 6px', cursor: 'pointer' }} />
         <div style={{ margin: '2px 8px 22px', fontSize: '11px', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#33A544' }}>YouTube Family Dashboard</div>
@@ -845,10 +847,13 @@ export default function Dashboard() {
       </nav>
 
       {/* ============ MAIN COLUMN ============ */}
-      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', minWidth: 0 }}>
+      <div className="csm-main" style={{ flex: 1, display: 'flex', flexDirection: 'column', minWidth: 0 }}>
 
         {/* Top bar */}
-        <header style={{ height: '60px', flex: '0 0 60px', background: '#FFFFFF', borderBottom: '1px solid #EFEFEF', display: 'flex', alignItems: 'center', gap: '16px', padding: '0 28px' }}>
+        <header className="csm-header" style={{ height: '60px', flex: '0 0 60px', background: '#FFFFFF', borderBottom: '1px solid #EFEFEF', display: 'flex', alignItems: 'center', gap: '16px', padding: '0 28px' }}>
+          <button className="csm-mobile-bar" onClick={() => setMobileMenuOpen(true)} style={{ border: 'none', background: 'transparent', padding: '4px', cursor: 'pointer', display: 'flex', alignItems: 'center' }}>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#222" strokeWidth="2" strokeLinecap="round"><path d="M3 12h18M3 6h18M3 18h18"></path></svg>
+          </button>
           <div style={{ fontSize: '15px', fontWeight: 700, color: '#222' }}>{titles[screen] || 'Dashboard'}</div>
           <div style={{ marginLeft: 'auto' }}></div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
@@ -863,15 +868,15 @@ export default function Dashboard() {
           {screen === 'home' && (
             <div>
               {/* VARIANT A: FOCUS */}
-              <section style={{ background: '#F2FEEE', padding: '44px 40px 40px', borderBottom: '1px solid #EFEFEF', position: 'relative', overflow: 'hidden' }}>
+              <section className="csm-hero-section" style={{ background: '#F2FEEE', padding: '44px 40px 40px', borderBottom: '1px solid #EFEFEF', position: 'relative', overflow: 'hidden' }}>
                 <div style={{ position: 'absolute', inset: 0 }}>
                   <img src="/hero-banner.webp" alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                 </div>
                 <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(rgba(255,255,255,0.78), rgba(255,255,255,0.62))', pointerEvents: 'none' }}></div>
                 <div style={{ maxWidth: '820px', margin: '0 auto', textAlign: 'center', display: 'flex', flexDirection: 'column', gap: '14px', alignItems: 'center', position: 'relative', zIndex: 2 }}>
-                  <h1 style={{ fontFamily: "var(--font-source-serif),'Source Serif Pro',Georgia,serif", fontWeight: 400, fontSize: '42px', lineHeight: 1.15, letterSpacing: '-0.5px', color: '#33A544', margin: 0 }}>Know what&apos;s in it before they press play.</h1>
-                  <p style={{ fontSize: '16px', lineHeight: '24px', color: '#3B3B3C', maxWidth: '560px', margin: 0 }}>Paste any YouTube link. We&apos;ll flag every scene worth knowing about &mdash; violence, language, ads, overstimulation &mdash; with exact timestamps.</p>
-                  <div style={{ display: 'flex', gap: '10px', width: '100%', maxWidth: '640px', marginTop: '8px' }}>
+                  <h1 className="csm-hero-title" style={{ fontFamily: "var(--font-source-serif),'Source Serif Pro',Georgia,serif", fontWeight: 400, fontSize: '42px', lineHeight: 1.15, letterSpacing: '-0.5px', color: '#33A544', margin: 0 }}>Know what&apos;s in it before they press play.</h1>
+                  <p className="csm-hero-desc" style={{ fontSize: '16px', lineHeight: '24px', color: '#3B3B3C', maxWidth: '560px', margin: 0 }}>Paste any YouTube link. We&apos;ll flag every scene worth knowing about &mdash; violence, language, ads, overstimulation &mdash; with exact timestamps.</p>
+                  <div className="csm-hero-input-row" style={{ display: 'flex', gap: '10px', width: '100%', maxWidth: '640px', marginTop: '8px' }}>
                     <input value={url} onChange={e => setUrl(e.target.value)} placeholder="Paste a YouTube link — e.g. youtube.com/watch?v=…" style={{ flex: 1, height: '50px', borderRadius: '12px', background: '#fff', border: '1px solid #CCCCCC', padding: '0 16px', fontFamily: "'Lato',sans-serif", fontSize: '14px', color: '#222', outline: 'none' }} />
                     <button onClick={analyze} style={{ height: '50px', padding: '0 28px', borderRadius: '12px', background: '#1A7E22', color: '#fff', fontFamily: "'Lato',sans-serif", fontWeight: 700, fontSize: '15px', border: 'none', cursor: 'pointer', transition: 'background 120ms' }}>Analyze Video</button>
                   </div>
@@ -879,7 +884,7 @@ export default function Dashboard() {
                 </div>
               </section>
 
-              <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '28px 40px 48px', display: 'grid', gridTemplateColumns: 'minmax(0,1fr) minmax(260px,320px)', gap: '28px', alignItems: 'start' }}>
+              <div className="csm-home-grid" style={{ maxWidth: '1100px', margin: '0 auto', padding: '28px 40px 48px', display: 'grid', gridTemplateColumns: 'minmax(0,1fr) minmax(260px,320px)', gap: '28px', alignItems: 'start' }}>
                 <section>
                   <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', marginBottom: '6px' }}>
                     <h5 style={{ fontFamily: "'Lato',sans-serif", fontWeight: 700, fontSize: '13px', letterSpacing: '0.08em', textTransform: 'uppercase', color: '#222', margin: 0 }}>Trending Categories</h5>
@@ -1396,15 +1401,15 @@ export default function Dashboard() {
           {/* ================= TEDIO / WATCH HISTORY ================= */}
           {screen === 'tedio' && (
             <div style={{ maxWidth: '560px', margin: '80px auto', padding: '0 24px' }}>
-              <section style={{ background: '#fff', border: '1px solid #33A544', borderRadius: '12px', boxShadow: '0 2px 8px rgba(0,0,0,0.10)', padding: '40px 36px 36px', display: 'flex', flexDirection: 'column', gap: '16px', textAlign: 'center', alignItems: 'center' }}>
+              <section className="csm-tedio-card" style={{ background: '#fff', border: '1px solid #33A544', borderRadius: '12px', boxShadow: '0 2px 8px rgba(0,0,0,0.10)', padding: '40px 36px 36px', display: 'flex', flexDirection: 'column', gap: '16px', textAlign: 'center', alignItems: 'center' }}>
                 <div style={{ width: '56px', height: '56px', borderRadius: '999px', background: '#F2FEEE', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                   <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#33A544" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
                 </div>
                 <div style={{ fontFamily: "'Lato',sans-serif", fontWeight: 700, fontSize: '11px', letterSpacing: '0.1em', textTransform: 'uppercase', color: '#33A544' }}>Coming soon</div>
-                <h2 style={{ fontFamily: "var(--font-source-serif),'Source Serif Pro',Georgia,serif", fontWeight: 400, fontSize: '32px', lineHeight: 1.15, color: '#222', margin: 0 }}>Watch History is in beta</h2>
-                <p style={{ fontSize: '15px', lineHeight: 1.55, color: '#3B3B3C', margin: 0, maxWidth: '420px' }}>We&apos;re building a tool that analyzes your child&apos;s YouTube history to reveal hidden patterns — autoplay traps, Shorts loops, late-night sessions, and more.</p>
+                <h2 className="csm-tedio-title" style={{ fontFamily: "var(--font-source-serif),'Source Serif Pro',Georgia,serif", fontWeight: 400, fontSize: '32px', lineHeight: 1.15, color: '#222', margin: 0 }}>Watch History is in beta</h2>
+                <p style={{ fontSize: '15px', lineHeight: 1.55, color: '#3B3B3C', margin: 0, maxWidth: '420px' }}>We&apos;re building a tool that analyzes your child&apos;s YouTube history to flag channels, videos, and activity that may need a closer look.</p>
                 <p style={{ fontSize: '14px', lineHeight: 1.5, color: '#757575', margin: 0 }}>Be the first to know when it&apos;s ready.</p>
-                <div style={{ display: 'flex', gap: '10px', width: '100%', maxWidth: '400px' }}>
+                <div className="csm-tedio-email-row" style={{ display: 'flex', gap: '10px', width: '100%', maxWidth: '400px' }}>
                   <input placeholder="Your email address" style={{ flex: 1, height: '48px', borderRadius: '12px', background: '#fff', border: '1px solid #CCCCCC', padding: '0 16px', fontFamily: "'Lato',sans-serif", fontSize: '14px', color: '#222', outline: 'none' }} />
                   <button style={{ height: '48px', padding: '0 24px', borderRadius: '12px', background: '#1A7E22', color: '#fff', fontFamily: "'Lato',sans-serif", fontWeight: 700, fontSize: '15px', border: 'none', cursor: 'pointer', whiteSpace: 'nowrap' }}>Join waitlist</button>
                 </div>
@@ -1415,10 +1420,10 @@ export default function Dashboard() {
 
           {/* ================= CREATOR WATCH LIST ================= */}
           {screen === 'watchlist' && (
-            <div style={{ maxWidth: '980px', margin: '0 auto', padding: '28px 40px 56px' }}>
+            <div className="csm-wl-page" style={{ maxWidth: '980px', margin: '0 auto', padding: '28px 40px 56px' }}>
               <div style={{ marginBottom: '10px', fontSize: '13px', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#33A544' }}>The Watch List</div>
-              <h1 style={{ fontFamily: "var(--font-source-serif),'Source Serif Pro',Georgia,serif", fontWeight: 700, fontSize: '42px', lineHeight: 1.15, color: '#222', margin: '0 0 14px', maxWidth: '780px' }}>The channels most kids see &mdash; and how concerning they are.</h1>
-              <p style={{ fontSize: '16px', lineHeight: 1.55, color: '#3B3B3C', margin: '0 0 26px', maxWidth: '660px' }}>We reviewed each channel against our content rubric. Every channel gets a single <strong>concern level</strong>. The list is ordered so the channels that reach the most kids <em>and</em> raise the most concern come first &mdash; those are the ones worth knowing about.</p>
+              <h1 className="csm-wl-title" style={{ fontFamily: "var(--font-source-serif),'Source Serif Pro',Georgia,serif", fontWeight: 700, fontSize: '42px', lineHeight: 1.15, color: '#222', margin: '0 0 14px', maxWidth: '780px' }}>The channels most kids see &mdash; and how concerning they are.</h1>
+              <p className="csm-wl-desc" style={{ fontSize: '16px', lineHeight: 1.55, color: '#3B3B3C', margin: '0 0 26px', maxWidth: '660px' }}>We reviewed each channel against our content rubric. Every channel gets a single <strong>concern level</strong>. The list is ordered so the channels that reach the most kids <em>and</em> raise the most concern come first &mdash; those are the ones worth knowing about.</p>
 
               <section style={{ border: '1px solid #CCCCCC', borderRadius: '12px', background: '#fff', marginBottom: '14px' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '15px 20px' }}>
@@ -1429,7 +1434,7 @@ export default function Dashboard() {
                 </div>
                 {wlOpen && (
                   <div style={{ borderTop: '1px solid #EFEFEF', background: '#FBFBFB', borderRadius: '0 0 12px 12px', padding: '20px', display: 'flex', flexDirection: 'column', gap: '18px' }}>
-                    <div style={{ display: 'grid', gridTemplateColumns: '120px 1fr', gap: '16px', alignItems: 'start' }}>
+                    <div className="csm-filter-grid" style={{ display: 'grid', gridTemplateColumns: '120px 1fr', gap: '16px', alignItems: 'start' }}>
                       <div><div style={{ fontSize: '14px', fontWeight: 700, color: '#222' }}>Genre</div><div style={{ fontSize: '12px', color: '#999999' }}>Pick any number</div></div>
                       <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
                         {genreList.map(g => (
@@ -1437,7 +1442,7 @@ export default function Dashboard() {
                         ))}
                       </div>
                     </div>
-                    <div style={{ display: 'grid', gridTemplateColumns: '120px 1fr', gap: '16px', alignItems: 'center' }}>
+                    <div className="csm-filter-grid" style={{ display: 'grid', gridTemplateColumns: '120px 1fr', gap: '16px', alignItems: 'center' }}>
                       <div style={{ fontSize: '14px', fontWeight: 700, color: '#222' }}>Order</div>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '14px', flexWrap: 'wrap' }}>
                         <div style={{ display: 'inline-flex', background: '#EFEFEF', borderRadius: '10px', padding: '3px' }}>
@@ -1448,7 +1453,7 @@ export default function Dashboard() {
                         <span style={{ fontSize: '13px', color: '#757575' }}>See which channels to watch out for.</span>
                       </div>
                     </div>
-                    <div style={{ display: 'grid', gridTemplateColumns: '120px 1fr', gap: '16px', alignItems: 'start' }}>
+                    <div className="csm-filter-grid" style={{ display: 'grid', gridTemplateColumns: '120px 1fr', gap: '16px', alignItems: 'start' }}>
                       <div style={{ fontSize: '14px', fontWeight: 700, color: '#222' }}>Child&apos;s age</div>
                       <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                         <div style={{ display: 'inline-flex', background: '#EFEFEF', borderRadius: '10px', padding: '3px', alignSelf: 'flex-start' }}>
@@ -1459,7 +1464,7 @@ export default function Dashboard() {
                         <span style={{ fontSize: '13px', color: '#757575' }}>Younger ages weigh pacing &amp; ads more; older ages weigh mature themes.</span>
                       </div>
                     </div>
-                    <div style={{ display: 'grid', gridTemplateColumns: '120px 1fr', gap: '16px', alignItems: 'start' }}>
+                    <div className="csm-filter-grid" style={{ display: 'grid', gridTemplateColumns: '120px 1fr', gap: '16px', alignItems: 'start' }}>
                       <div style={{ fontSize: '14px', fontWeight: 700, color: '#222' }}>Emphasize</div>
                       <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
                         {emphList.map(g => (
@@ -1471,7 +1476,7 @@ export default function Dashboard() {
                 )}
               </section>
 
-              <div style={{ display: 'flex', alignItems: 'center', gap: '18px', flexWrap: 'wrap', background: '#F7F7F7', borderRadius: '12px', padding: '13px 20px' }}>
+              <div className="csm-legend-bar" style={{ display: 'flex', alignItems: 'center', gap: '18px', flexWrap: 'wrap', background: '#F7F7F7', borderRadius: '12px', padding: '13px 20px' }}>
                 <span style={{ fontSize: '13px', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#222' }}>Concern level</span>
                 <span style={{ width: '1px', height: '16px', background: '#CCCCCC' }}></span>
                 {legendLevels.map(l => (
@@ -1485,9 +1490,9 @@ export default function Dashboard() {
                     const cat = CATEGORY_DATA.find(k => c.genres.includes(k.name));
                     setCurrentChannel({ name: c.name, color: c.avatarBg, genreName: cat ? cat.name : c.genres[0], genreId: cat ? cat.id : 'challenge' });
                     setScreen('channel');
-                  }} style={{ display: 'grid', gridTemplateColumns: '36px 110px minmax(0,1fr) 110px', gap: '20px', alignItems: 'center', padding: '22px 8px', borderBottom: '1px solid #EFEFEF', cursor: 'pointer' }}>
+                  }} className="csm-wl-creator-row" style={{ display: 'grid', gridTemplateColumns: '36px 110px minmax(0,1fr) 110px', gap: '20px', alignItems: 'center', padding: '22px 8px', borderBottom: '1px solid #EFEFEF', cursor: 'pointer' }}>
                     <span style={{ fontFamily: "var(--font-source-serif),'Source Serif Pro',Georgia,serif", fontSize: '26px', fontWeight: 700, color: '#BBBBBB', textAlign: 'center' }}>{c.rank}</span>
-                    <span style={{ width: '100px', height: '100px', borderRadius: '999px', background: c.avatarTint, border: '1px solid rgba(0,0,0,0.08)', color: c.avatarFg, display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700, fontSize: '34px', overflow: 'hidden', position: 'relative' }}>
+                    <span className="csm-wl-avatar" style={{ width: '100px', height: '100px', borderRadius: '999px', background: c.avatarTint, border: '1px solid rgba(0,0,0,0.08)', color: c.avatarFg, display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700, fontSize: '34px', overflow: 'hidden', position: 'relative' }}>
                       {c.avatarImg ? <img src={c.avatarImg} alt={c.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} /> : c.initial}
                     </span>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', minWidth: 0 }}>

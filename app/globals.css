@@ -8,3 +8,37 @@ a:hover { color: #1A7E22; }
 ::-webkit-scrollbar { width: 10px; height: 10px; }
 ::-webkit-scrollbar-thumb { background: #CCCCCC; border-radius: 999px; }
 ::-webkit-scrollbar-track { background: transparent; }
+
+/* ─── Mobile responsive ─── */
+@media (max-width: 768px) {
+  .csm-shell { flex-direction: column !important; }
+  .csm-sidebar { display: none !important; }
+  .csm-sidebar.csm-sidebar--open { display: flex !important; position: fixed; inset: 0; z-index: 100; width: 100% !important; flex: none !important; }
+  .csm-mobile-bar { display: flex !important; }
+  .csm-main { width: 100% !important; }
+  .csm-hero-title { font-size: 26px !important; }
+  .csm-hero-desc { font-size: 14px !important; }
+  .csm-hero-input-row { flex-direction: column !important; }
+  .csm-hero-input-row input { width: 100% !important; }
+  .csm-hero-input-row button { width: 100% !important; }
+  .csm-home-grid { grid-template-columns: 1fr !important; }
+  .csm-wl-page { padding: 20px 16px 56px !important; }
+  .csm-wl-title { font-size: 28px !important; }
+  .csm-wl-desc { font-size: 14px !important; }
+  .csm-wl-creator-row { grid-template-columns: 28px 60px minmax(0,1fr) !important; gap: 12px !important; }
+  .csm-wl-creator-row > :last-child { grid-column: 1 / -1; justify-self: start; }
+  .csm-wl-avatar { width: 56px !important; height: 56px !important; font-size: 22px !important; }
+  .csm-filter-grid { grid-template-columns: 1fr !important; }
+  .csm-tedio-card { padding: 28px 20px 24px !important; }
+  .csm-tedio-title { font-size: 24px !important; }
+  .csm-tedio-email-row { flex-direction: column !important; }
+  .csm-legend-bar { flex-wrap: wrap !important; gap: 8px 14px !important; padding: 10px 14px !important; }
+  .csm-hero-section { padding: 28px 16px 28px !important; }
+  .csm-header { padding: 0 16px !important; }
+  .csm-cat-tile-grid { grid-template-columns: 1fr 1fr 1fr !important; }
+  .csm-cat-tile { height: 100px !important; }
+}
+
+@media (min-width: 769px) {
+  .csm-mobile-bar { display: none !important; }
+}
