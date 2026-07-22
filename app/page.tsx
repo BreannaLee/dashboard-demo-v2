@@ -363,7 +363,7 @@ const ANALYZED_CHANNELS = new Set([
 function isAnalyzed(name: string) { return ANALYZED_CHANNELS.has(name.toLowerCase()); }
 
 const CATEGORY_DATA = [
-  { id: 'music', eyebrow: 'ages 0-5', name: 'Music & Nursery Rhymes', sample: 'Use these analyses to create Whitelist for YouTube Kids',
+  { id: 'music', eyebrow: 'ages 0-2, 3-5', name: 'Music & Nursery Rhymes', sample: 'Use these analyses to create Whitelist for YouTube Kids',
     accent: '#423FE1', tiles: [
       { name: 'Ms. Rachel', color: '#33A544', img: '/chan-music-2.webp' },
       { name: 'Fairy Tales and Stories for Kids', color: '#D8690E', img: '/cat-music-fairytales.webp' },
@@ -373,7 +373,7 @@ const CATEGORY_DATA = [
       { name: 'ChuChu TV', color: '#D8690E', img: '/chan-music-0.webp' },
       { name: 'Little Baby Bum', color: '#FFC60B', img: '/chan-music-1.webp' },
     ] },
-  { id: 'challenge', eyebrow: 'ages 9+', name: 'Challenge, Stunt & Comedy Entertainment', sample: 'Challenge videos, Stunts, Pranks & Comedy content popular among tweens',
+  { id: 'challenge', eyebrow: 'ages 9-11, 12-14', name: 'Challenge, Stunt & Comedy Entertainment', sample: 'Challenge videos, Stunts, Pranks & Comedy content popular among tweens',
     accent: '#D8690E', tiles: [
       { name: 'MrBeast', color: '#D8690E', img: '/cat-challenge-0.webp' },
       { name: 'Chris and Jack', color: '#423FE1', img: '/cat-challenge-chrisandjack.webp' },
@@ -383,7 +383,7 @@ const CATEGORY_DATA = [
       { name: '5-Minute Crafts', color: '#1A7E22', img: '/chan-challenge-1.webp' },
       { name: 'Zach King', color: '#E8843A', img: '/chan-challenge-2.webp' },
     ] },
-  { id: 'gaming', eyebrow: 'ages 6-12', name: 'Gaming', sample: 'Roblox, Minecraft, Gaming Streaming content popular among teens & pre-teens',
+  { id: 'gaming', eyebrow: 'ages 6-8, 9-11', name: 'Gaming', sample: 'Roblox, Minecraft, Gaming Streaming content popular among teens & pre-teens',
     accent: '#8848C1', tiles: [
       { name: 'KreekCraft', color: '#E8843A', img: '/cat-gaming-kreekcraft.webp' },
       { name: 'DanTDM', color: '#8848C1', img: '/cat-gaming-0.webp' },
@@ -393,7 +393,7 @@ const CATEGORY_DATA = [
       { name: 'Grian', color: '#FFC60B', img: '/cat-gaming-grian.webp' },
       { name: 'MrBeast Gaming', color: '#D8690E', img: '/cat-gaming-mrbeastgaming.webp' },
     ] },
-  { id: 'pretend', eyebrow: 'ages 3-8', name: 'Pretend Play, Toys & Family Adventure', sample: 'Toy-Unboxing, Kids Pranks, Family creators content',
+  { id: 'pretend', eyebrow: 'ages 3-5, 6-8', name: 'Pretend Play, Toys & Family Adventure', sample: 'Toy-Unboxing, Kids Pranks, Family creators content',
     accent: '#1A7E22', tiles: [
       { name: 'Blippi', color: '#E8843A', img: '/cat-pretend-blippi.webp' },
       { name: 'Kids Diana Show', color: '#1A7E22', img: '/cat-pretend-0.webp' },
@@ -402,7 +402,7 @@ const CATEGORY_DATA = [
       { name: "Ryan's World", color: '#FFC60B', img: '/cat-pretend-ryansworld.webp' },
       { name: 'Toys and Colors', color: '#8848C1', img: '/cat-pretend-toysandcolors.webp' },
     ] },
-  { id: 'beauty', eyebrow: 'ages 12+', name: 'Beauty / Makeup / ASMR', sample: 'Makeup tutorials, GRWM, Shopping Hauls, ASMR, Beauty Vloggers content',
+  { id: 'beauty', eyebrow: 'ages 12-14', name: 'Beauty / Makeup / ASMR', sample: 'Makeup tutorials, GRWM, Shopping Hauls, ASMR, Beauty Vloggers content',
     accent: '#E41177', tiles: [
       { name: 'Gibi ASMR', color: '#8848C1', img: '/cat-beauty-2.webp' },
       { name: 'James Charles', color: '#E41177', img: '/cat-beauty-jamescharies.webp' },
