@@ -953,11 +953,11 @@ export default function Dashboard() {
             const an = allAnalyses.find(a => a.id === currentId) || allAnalyses[0];
             const realUrl = getRealAnalysisUrl(an.channel) || getRealAnalysisUrl(an.id);
             return realUrl ? (
-            <div style={{ display: 'flex', flexDirection: 'column', height: mob ? 'auto' : '100%' }}>
+            <div>
               <div style={{ padding: mob ? '12px 16px 0' : '12px 40px 0' }}>
                 <button onClick={() => { const dest = prevScreen === 'genre' || prevScreen === 'channel' || prevScreen === 'allvideos' ? prevScreen : 'home'; setScreen(dest); }} style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', border: 'none', background: 'transparent', fontFamily: "'Lato',sans-serif", fontSize: '13px', fontWeight: 700, color: '#757575', cursor: 'pointer', padding: '0 0 8px' }}>&larr; {prevScreen === 'genre' ? `Back to ${curGenreData.name}` : prevScreen === 'channel' && currentChannel ? `Back to ${currentChannel.name}` : prevScreen === 'allvideos' ? 'Back to All Videos' : 'Back to Analyzer'}</button>
               </div>
-              <iframe src={realUrl} scrolling="yes" allow="autoplay; fullscreen" style={{ flex: mob ? undefined : 1, width: '100%', border: 'none', height: mob ? '3000px' : undefined, minHeight: '3000px' }} title="Video Analysis" />
+              <iframe src={realUrl} scrolling="yes" allow="autoplay; fullscreen" style={{ display: 'block', width: '100%', border: 'none', height: '4000px' }} title="Video Analysis" />
               <div style={{ display: 'none' }}>
 
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: '28px', alignItems: 'start', marginBottom: '28px' }}>
